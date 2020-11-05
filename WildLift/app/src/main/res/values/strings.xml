@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WildLift</string>
+    <string name="champion_ahri">ahri</string>
 </resources>
