@@ -1,2 +1,2 @@
 # WildLift
-LOL : WildLift ë°±ê³¼ì‚¬ì „ ì œìž‘ 
+LOL : WildLift ¹é°ú»çÀü
