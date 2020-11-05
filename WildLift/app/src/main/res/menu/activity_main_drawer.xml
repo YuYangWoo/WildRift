@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="게임 정보">
+        <menu>
+            <item
+                android:id="@+id/championInformation"
+                android:icon="@drawable/ic_menu_send"
+                android:title="챔피언 정보"></item>
+            <item
+                android:id="@+id/itemInformation"
+                android:icon="@drawable/ic_menu_send"
+                android:title="아이템정보"
+                ></item>
+            <item
+                android:id="@+id/runesSpell"
+                android:icon="@drawable/ic_menu_send"
+                android:title="룬/스펠"
+                ></item>
+
+
+        </menu>
+    </item>
+</menu>
+
+
