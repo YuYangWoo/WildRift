@@ -6,5 +6,9 @@ import com.cookandroid.wildlift.databinding.HolderItemBinding
 class ItemHolder(binding: HolderItemBinding) : BaseHolder<HolderItemBinding, Item>(binding) {
     init {
         binding.holder = this
+
+        itemView.setOnClickListener {
+            ItemDialog(itemView.context, item).show()
+        }
     }
 }

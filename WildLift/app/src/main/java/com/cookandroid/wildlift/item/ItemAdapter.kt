@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.NetworkResponse
 import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.StringRequest
 import com.cookandroid.wildlift.R
 import com.cookandroid.wildlift.singleton.VolleyHttp
@@ -19,8 +22,8 @@ class ItemAdapter(private val context: Context) : RecyclerView.Adapter<ItemHolde
         setHasStableIds(true)
 
         list = ArrayList<Item>().apply {
-            val request = StringRequest(
-                Request.Method.GET, "http://ddragon.leagueoflegends.com/cdn/10.22.1/data/ko_KR/item.json",
+            val request =  StringRequest(
+                Request.Method.GET, "http://ddragon.leagueoflegends.com/cdn/10.22.1/data/en_US/item.json",
                 {
                     val json = JSONObject(it)
                     val items = json.getJSONObject("data")
@@ -29,6 +32,7 @@ class ItemAdapter(private val context: Context) : RecyclerView.Adapter<ItemHolde
                         add(ItemFactory.createFromJsonObject(key.toInt(), items.getJSONObject(key)))
                     }
 
+                    Log.d("PASS", it)
                     notifyDataSetChanged()
                 },
                 {

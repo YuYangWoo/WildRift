@@ -14,4 +14,12 @@
     <string name="test_bottom_ad_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="bottom_ad_id" translatable="false">ca-app-pub-6308948435596230/6884718456</string>
     <string name="image">image</string>
+    <string name="item">item</string>
+    <string name="physics">Physics</string>
+    <string name="magic">Magic</string>
+    <string name="defense">Defense</string>
+    <string name="shoes">Shoes</string>
+    <string name="final_item">Final Item</string>
+    <string name="middle_item">Middle Item</string>
+    <string name="base_item">Base Item</string>
 </resources>
