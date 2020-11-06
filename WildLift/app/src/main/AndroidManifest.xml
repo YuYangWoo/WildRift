@@ -19,7 +19,7 @@
         </activity>
         <activity android:name=".champion.ChampionActivity">
         </activity>
-        <activity android:name=".ItemActivity">
+        <activity android:name=".item.ItemActivity">
         </activity>
         <activity android:name=".RunesActivity">
         </activity>
