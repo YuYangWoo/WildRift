@@ -36,7 +36,7 @@ class ChampionListFragment(val tabTitle: Int) : Fragment() {
         // LinearLayoutManager 객체 생성 후 layoutManager에 대입 및 recyclerView 고정크기 On
         recyclerView.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(context)
-        (layoutManager as LinearLayoutManager).stackFromEnd = true // 처음부터 끝까지
+//        (layoutManager as LinearLayoutManager).stackFromEnd = true // 처음부터 끝까지
         recyclerView.layoutManager = layoutManager
 
         championAdapter = CustomAdapter(championList,context!!)

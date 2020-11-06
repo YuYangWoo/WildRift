@@ -1,23 +1,20 @@
 package com.cookandroid.wildlift.champion
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cookandroid.wildlift.R
-import com.cookandroid.wildlift.R.drawable.ic_launcher_background
 
 class CustomAdapter(private val championList: ArrayList<ChampionItem>, private val context: Context) : RecyclerView.Adapter<CustomAdapter.CustomViewHolder>() {
 
     // 실제 리스트뷰가 어댑터에 연결된 다음에 뷰 홀더를 최초로 만들어낸다.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.list_log, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.list_champion, parent, false)
         return CustomViewHolder(view)
     }
 
@@ -44,7 +41,7 @@ class CustomAdapter(private val championList: ArrayList<ChampionItem>, private v
         holder.txtChampionRp.text = championList[position].rp
     }
 
-    // ViewHolder를 만들어 list_log.xml의 아이템들을 정의한다.
+    // ViewHolder를 만들어 list_champion.xml의 아이템들을 정의한다.
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var photo: ImageView = itemView.findViewById(R.id.imgChampion)
         var txtChampionName: TextView   = itemView.findViewById(R.id.txtName)
