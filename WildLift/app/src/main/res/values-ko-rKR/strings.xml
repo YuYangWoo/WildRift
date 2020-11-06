@@ -17,4 +17,5 @@
     <string name="total_cost">구매 가격</string>
     <string name="combination_cost">조합 가격</string>
     <string name="sell_cost">판매 가격</string>
+    <string name="search">검색</string>
 </resources>

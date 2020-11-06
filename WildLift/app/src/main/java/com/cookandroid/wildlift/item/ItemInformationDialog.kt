@@ -8,21 +8,24 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookandroid.wildlift.R
-import com.cookandroid.wildlift.databinding.DialogItemBinding
+import com.cookandroid.wildlift.databinding.DialogItemInformationBinding
 
-class ItemDialog(context: Context, val item: Item) : Dialog(context) {
-    private lateinit var binding: DialogItemBinding
+class ItemInformationDialog(context: Context, val item: Item) : Dialog(context) {
+    private lateinit var binding: DialogItemInformationBinding
 
     companion object {
-        var instance: ItemDialog? = null
+        var instance: ItemInformationDialog? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_item, null, false)
+        binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_item_information, null, false)
 
         with(binding.intoRecyclerView) {
-            adapter = ItemAdapter(item.into)
+            adapter = ItemAdapter().apply {
+                list = item.into
+            }
+
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
             if (item.into.isEmpty()) {
@@ -31,7 +34,10 @@ class ItemDialog(context: Context, val item: Item) : Dialog(context) {
         }
 
         with(binding.fromRecyclerView) {
-            adapter = ItemAdapter(item.from)
+            adapter = ItemAdapter().apply {
+                list = item.from
+            }
+
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
             if (item.from.isEmpty()) {

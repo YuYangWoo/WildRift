@@ -28,4 +28,6 @@
     <string name="total_cost">Total Cost</string>
     <string name="combination_cost">Combination Cost</string>
     <string name="sell_cost">Sell Cost</string>
+    <string name="search">Search</string>
+    <string name="name">Name</string>
 </resources>

@@ -16,7 +16,10 @@ import com.cookandroid.wildlift.singleton.VolleyHttp
 import org.json.JSONObject
 import kotlin.properties.Delegates
 
-class ItemAdapter(private val list: List<Item>) : RecyclerView.Adapter<ItemHolder>() {
+class ItemAdapter : RecyclerView.Adapter<ItemHolder>() {
+    var list by Delegates.observable(listOf<Item>()) { _, _, _ ->
+        notifyDataSetChanged()
+    }
 
     init {
         setHasStableIds(true)
