@@ -5,43 +5,37 @@ import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.cookandroid.wildlift.R
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_champion.*
 
 class ChampionActivity : AppCompatActivity() {
-
+    private lateinit var championInfo: ArrayList<ChampionItem>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_champion)
 
         // ActionBar Title 변경
-        title = "와일드리프트"
+        title = resources.getString(R.string.app_name)
 
         // ActionBar Home 버튼 Enable
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // 변수 Adapter에 ViewPagerAdapter를 객체화
-        val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
 
-        for(i in 0..5) {
-            adapter.addFragment(ChampionListFragment())
-        }
+
+
+
+
+        val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
         viewPager.adapter = adapter
 
         // TabLayout에 ViewPager를 연동
         TabLayoutMediator(tabLyChampion, viewPager, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-            when (position) {
-                0 -> tab.text = resources.getString(R.string.champion_list_All    ) // 면적
-                1 -> tab.text = resources.getString(R.string.champion_list_TOP    ) // 길이
-                2 -> tab.text = resources.getString(R.string.champion_list_JUNGLE ) // 온도
-                3 -> tab.text = resources.getString(R.string.champion_list_MID    ) // 부피
-                4 -> tab.text = resources.getString(R.string.champion_list_BOTTOM ) // 무게
-                5 -> tab.text = resources.getString(R.string.champion_list_SUPPORT) // 데이터
-                else -> {
-                    Log.d("Test", "Error!!")
-                }
-            }
+            tab.text = getString(adapter.fragmentList[position].tabTitle)
         }).attach()
+
     }
 
     // ActionBar ItemSelected 이벤트
