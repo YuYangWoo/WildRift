@@ -1,13 +1,17 @@
 package com.cookandroid.wildlift.item
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.cookandroid.wildlift.R
 import com.cookandroid.wildlift.base.BaseActivity
 import com.cookandroid.wildlift.databinding.ActivityItemBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class ItemActivity : BaseActivity<ActivityItemBinding>(R.layout.activity_item) {
+    private val model by lazy { ViewModelProvider(this).get(ItemActivityViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,17 +20,37 @@ class ItemActivity : BaseActivity<ActivityItemBinding>(R.layout.activity_item) {
 
     private fun init() {
         initActionBar()
-        initRecyclerView()
+        initViewPager()
     }
 
     private fun initActionBar() {
         setSupportActionBar(binding.toolbar)
     }
 
-    private fun initRecyclerView() {
-        with(binding.recyclerView) {
-            adapter = ItemAdapter(this@ItemActivity)
-            layoutManager = GridLayoutManager(this@ItemActivity, 4)
+    private fun initViewPager() {
+        with(binding) {
+            viewPager.adapter = object : FragmentStateAdapter(this@ItemActivity) {
+                override fun getItemCount(): Int {
+                    return model.fragments.size
+                }
+
+                override fun createFragment(position: Int): Fragment {
+                    return model.fragments[position]
+                }
+            }
+
+            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                tab.text = getString(model.fragments[position].tabTitle)
+            }.attach()
+        }
+    }
+
+    class ItemActivityViewModel : ViewModel() {
+        val fragments by lazy {
+            arrayOf(
+                ItemFragment(R.string.physics), ItemFragment(R.string.magic),
+                ItemFragment(R.string.defense), ItemFragment(R.string.shoes)
+            )
         }
     }
 }
