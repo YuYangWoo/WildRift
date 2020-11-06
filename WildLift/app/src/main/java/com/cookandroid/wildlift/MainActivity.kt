@@ -2,7 +2,9 @@ package com.cookandroid.wildlift
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -11,13 +13,17 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.cookandroid.wildlift.champion.ChampionActivity
 import com.cookandroid.wildlift.item.ItemActivity
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    private lateinit var database: FirebaseDatabase
+    private lateinit var databaseReference: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.content_main)
 
+        title = resources.getString(R.string.app_name)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
@@ -33,6 +39,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         //아이템 선택 이벤트 호출
         navigationView.setNavigationItemSelectedListener(this)
+
+        database = FirebaseDatabase.getInstance()
+        databaseReference = database.getReference("ItemList").child("labadon")
+        databaseReference
+//        Log.d("test",databaseReference)
+//        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                var abc = snapshot.value
+//                Log.d("test", abc.toString())
+//
+//
+//            }
+//            override fun onCancelled(error: DatabaseError) {
+//
+//            }
+//        })
+//        var a =
+//        Toast.makeText(this,databaseReference.toString(),Toast.LENGTH_LONG).show()
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

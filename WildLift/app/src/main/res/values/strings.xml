@@ -30,4 +30,12 @@
     <string name="sell_cost">Sell Cost</string>
     <string name="search">Search</string>
     <string name="name">Name</string>
+    <string name="champion_list_All" translatable="false">All</string>
+    <string name="champion_list_TOP" translatable="false">Top</string>
+    <string name="champion_list_JUNGLE" translatable="false">Jungle</string>
+    <string name="champion_list_MID" translatable="false">Mid</string>
+    <string name="champion_list_BOTTOM" translatable="false">Bottom</string>
+    <string name="champion_list_SUPPORT" translatable="false">Support</string>
+
+
 </resources>
