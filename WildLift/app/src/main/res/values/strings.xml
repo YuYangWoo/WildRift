@@ -13,4 +13,12 @@
     <string name="test_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="test_bottom_ad_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="bottom_ad_id" translatable="false">ca-app-pub-6308948435596230/6884718456</string>
+    <string name="champion_list_All" translatable="false">All</string>
+    <string name="champion_list_TOP" translatable="false">Top</string>
+    <string name="champion_list_JUNGLE" translatable="false">Jungle</string>
+    <string name="champion_list_MID" translatable="false">Mid</string>
+    <string name="champion_list_BOTTOM">Bottom</string>
+    <string name="champion_list_SUPPORT">Support</string>
+
+
 </resources>
