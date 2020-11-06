@@ -34,6 +34,6 @@ object ItemFactory {
             listOf()
         }
 
-        return Item(id, name, description, totalCost, combinationCost, sellCost, from, into)
+        return Item(id, name, description, totalCost, combinationCost, sellCost, listOf(), listOf())
     }
 }

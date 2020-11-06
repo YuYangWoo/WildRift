@@ -1,6 +1,8 @@
 package com.cookandroid.wildlift.item
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -8,6 +10,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.cookandroid.wildlift.R
 import com.cookandroid.wildlift.base.BaseActivity
 import com.cookandroid.wildlift.databinding.ActivityItemBinding
+import com.cookandroid.wildlift.item.fragment.*
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ItemActivity : BaseActivity<ActivityItemBinding>(R.layout.activity_item) {
@@ -16,6 +19,23 @@ class ItemActivity : BaseActivity<ActivityItemBinding>(R.layout.activity_item) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menu?.add(0, R.string.search, 0, R.string.search)?.setIcon(R.drawable.ic_search)?.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.string.search -> {
+                ItemSearchDialog(this).show()
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
     }
 
     private fun init() {
@@ -48,8 +68,8 @@ class ItemActivity : BaseActivity<ActivityItemBinding>(R.layout.activity_item) {
     class ItemActivityViewModel : ViewModel() {
         val fragments by lazy {
             arrayOf(
-                ItemFragment(R.string.physics), ItemFragment(R.string.magic),
-                ItemFragment(R.string.defense), ItemFragment(R.string.shoes)
+                PhysicsFragment(), MagicFragment(),
+                DefenseFragment(), ShoesFragment()
             )
         }
     }

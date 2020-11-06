@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="dialog"
+            type="com.cookandroid.wildlift.item.ItemInformationDialog" />
+    </data>
+
+    <ScrollView
+        android:background="#000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                itemImage="@{dialog.item}"
+
+                android:layout_gravity="center"
+                android:background="#000000"
+                android:layout_margin="5dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/item" />
+
+            <TextView
+                style="@style/ItemName"
+                android:text="@{dialog.item.name}" />
+
+            <TextView
+                style="@style/ItemCost"
+                totalCost="@{dialog.item}" />
+
+
+            <TextView
+                style="@style/ItemCost"
+                combinationCost="@{dialog.item}" />
+
+            <TextView
+                style="@style/ItemCost"
+                sellCost="@{dialog.item}" />
+
+            <TextView
+                android:text="@{dialog.item.description}"
+
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/intoItemTextView"
+                android:text="@string/into_item"
+
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/intoRecyclerView"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/fromItemTextView"
+                android:text="@string/from_item"
+
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fromRecyclerView"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
+</layout>
