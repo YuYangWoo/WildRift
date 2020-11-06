@@ -1,7 +1,8 @@
-package com.cookandroid.wildlift
+package com.cookandroid.wildlift.champion
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.cookandroid.wildlift.R
 
 class ChampionActivity : AppCompatActivity() {
 
