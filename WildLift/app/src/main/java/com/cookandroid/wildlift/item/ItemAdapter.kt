@@ -14,34 +14,14 @@ import com.android.volley.toolbox.StringRequest
 import com.cookandroid.wildlift.R
 import com.cookandroid.wildlift.singleton.VolleyHttp
 import org.json.JSONObject
+import kotlin.properties.Delegates
 
-class ItemAdapter(private val context: Context) : RecyclerView.Adapter<ItemHolder>() {
-    private val list: List<Item>
+class ItemAdapter(private val type: String, private val depth: Int) : RecyclerView.Adapter<ItemHolder>() {
+    private lateinit var list: List<Item>
 
     init {
         setHasStableIds(true)
-
-        list = ArrayList<Item>().apply {
-            val request =  StringRequest(
-                Request.Method.GET, "http://ddragon.leagueoflegends.com/cdn/10.22.1/data/en_US/item.json",
-                {
-                    val json = JSONObject(it)
-                    val items = json.getJSONObject("data")
-
-                    for (key in items.keys()) {
-                        add(ItemFactory.createFromJsonObject(key.toInt(), items.getJSONObject(key)))
-                    }
-
-                    Log.d("PASS", it)
-                    notifyDataSetChanged()
-                },
-                {
-                    Log.d("PASS", it.toString())
-                }
-            )
-
-            VolleyHttp.getInstance(context).request(request)
-        }
+        requestItem()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
@@ -62,5 +42,9 @@ class ItemAdapter(private val context: Context) : RecyclerView.Adapter<ItemHolde
 
     override fun getItemViewType(position: Int): Int {
         return R.layout.holder_item
+    }
+
+    private fun requestItem() {
+        list = ItemTestDB.request(type, depth)
     }
 }
