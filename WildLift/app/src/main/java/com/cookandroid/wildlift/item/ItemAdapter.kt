@@ -16,12 +16,10 @@ import com.cookandroid.wildlift.singleton.VolleyHttp
 import org.json.JSONObject
 import kotlin.properties.Delegates
 
-class ItemAdapter(private val type: String, private val depth: Int) : RecyclerView.Adapter<ItemHolder>() {
-    private lateinit var list: List<Item>
+class ItemAdapter(private val list: List<Item>) : RecyclerView.Adapter<ItemHolder>() {
 
     init {
         setHasStableIds(true)
-        requestItem()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
@@ -44,7 +42,4 @@ class ItemAdapter(private val type: String, private val depth: Int) : RecyclerVi
         return R.layout.holder_item
     }
 
-    private fun requestItem() {
-        list = ItemTestDB.request(type, depth)
-    }
 }

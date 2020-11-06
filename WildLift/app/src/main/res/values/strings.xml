@@ -22,4 +22,10 @@
     <string name="final_item">Final Item</string>
     <string name="middle_item">Middle Item</string>
     <string name="base_item">Base Item</string>
+    <string name="coin">coin</string>
+    <string name="into_item">Into Item</string>
+    <string name="from_item">From Item</string>
+    <string name="total_cost">Total Cost</string>
+    <string name="combination_cost">Combination Cost</string>
+    <string name="sell_cost">Sell Cost</string>
 </resources>

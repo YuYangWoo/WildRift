@@ -2,4 +2,19 @@
 <resources>
     <string name="app_name">WildLift</string>
     <string name="champion_ahri">아리</string>
+    <string name="coin">코인</string>
+    <string name="from_item">하위 아이템</string>
+    <string name="into_item">상위 아이템</string>
+    <string name="base_item">기본 아이템</string>
+    <string name="middle_item">중간 아이템</string>
+    <string name="final_item">최종 아이템</string>
+    <string name="shoes">신발</string>
+    <string name="defense">방어구</string>
+    <string name="magic">마법</string>
+    <string name="physics">물리</string>
+    <string name="item">아이템</string>
+    <string name="image">이미지</string>
+    <string name="total_cost">구매 가격</string>
+    <string name="combination_cost">조합 가격</string>
+    <string name="sell_cost">판매 가격</string>
 </resources>

@@ -49,9 +49,9 @@ class ItemFragment(val tabTitle: Int) : BaseFragment<FragmentItemBinding>(R.layo
     }
 
     class ItemFragmentViewModel(private val fragment: ItemFragment) : ViewModel() {
-        val finalAdapter by lazy { ItemAdapter(fragment.getString(fragment.tabTitle), 3) }
-        val middleAdapter by lazy { ItemAdapter(fragment.getString(fragment.tabTitle), 2) }
-        val baseAdapter by lazy { ItemAdapter(fragment.getString(fragment.tabTitle), 1) }
+        val finalAdapter by lazy { ItemAdapter(ItemTestDB.request(fragment.getString(fragment.tabTitle), 1)) }
+        val middleAdapter by lazy { ItemAdapter(ItemTestDB.request(fragment.getString(fragment.tabTitle), 2)) }
+        val baseAdapter by lazy { ItemAdapter(ItemTestDB.request(fragment.getString(fragment.tabTitle), 3)) }
     }
 
     class ItemFragmentViewModelFactory(private val fragment: ItemFragment) : ViewModelProvider.Factory {
