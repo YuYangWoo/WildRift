@@ -1,4 +1,4 @@
-package com.cookandroid.wildlift.item
+package com.cookandroid.wildlift.item.dialog
 
 import android.app.Dialog
 import android.content.Context
@@ -9,16 +9,17 @@ import android.view.LayoutInflater
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cookandroid.wildlift.R
+import com.cookandroid.wildlift.base.BaseDialog
 import com.cookandroid.wildlift.databinding.DialogItemSearchBinding
+import com.cookandroid.wildlift.item.Item
+import com.cookandroid.wildlift.item.ItemAdapter
+import com.cookandroid.wildlift.item.ItemTestDB
 
-class ItemSearchDialog(context: Context) : Dialog(context) {
-    private lateinit var binding: DialogItemSearchBinding
+class ItemSearchDialog(context: Context) : BaseDialog<DialogItemSearchBinding>(context, R.layout.dialog_item_search) {
     private val adapter by lazy { ItemAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_item_search, null, false)
-        binding.dialog = this
 
         binding.input.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -51,7 +52,5 @@ class ItemSearchDialog(context: Context) : Dialog(context) {
             adapter = this@ItemSearchDialog.adapter
             layoutManager = GridLayoutManager(context, 3)
         }
-
-        setContentView(binding.root)
     }
 }

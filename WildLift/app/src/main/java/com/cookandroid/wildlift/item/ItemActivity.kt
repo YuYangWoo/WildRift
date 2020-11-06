@@ -10,6 +10,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.cookandroid.wildlift.R
 import com.cookandroid.wildlift.base.BaseActivity
 import com.cookandroid.wildlift.databinding.ActivityItemBinding
+import com.cookandroid.wildlift.item.dialog.ItemSearchDialog
 import com.cookandroid.wildlift.item.fragment.*
 import com.google.android.material.tabs.TabLayoutMediator
 

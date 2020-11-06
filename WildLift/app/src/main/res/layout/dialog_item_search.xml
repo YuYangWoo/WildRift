@@ -5,7 +5,7 @@
     <data>
         <variable
             name="dialog"
-            type="com.cookandroid.wildlift.item.ItemSearchDialog" />
+            type="com.cookandroid.wildlift.item.dialog.ItemSearchDialog" />
     </data>
 
     <ScrollView

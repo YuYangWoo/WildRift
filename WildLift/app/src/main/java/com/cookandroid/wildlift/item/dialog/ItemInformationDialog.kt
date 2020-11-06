@@ -1,4 +1,4 @@
-package com.cookandroid.wildlift.item
+package com.cookandroid.wildlift.item.dialog
 
 import android.app.Dialog
 import android.content.Context
@@ -8,18 +8,18 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookandroid.wildlift.R
+import com.cookandroid.wildlift.base.BaseDialog
 import com.cookandroid.wildlift.databinding.DialogItemInformationBinding
+import com.cookandroid.wildlift.item.Item
+import com.cookandroid.wildlift.item.ItemAdapter
 
-class ItemInformationDialog(context: Context, val item: Item) : Dialog(context) {
-    private lateinit var binding: DialogItemInformationBinding
-
+class ItemInformationDialog(context: Context, val item: Item) : BaseDialog<DialogItemInformationBinding>(context, R.layout.dialog_item_information) {
     companion object {
         var instance: ItemInformationDialog? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_item_information, null, false)
 
         with(binding.intoRecyclerView) {
             adapter = ItemAdapter().apply {
@@ -44,9 +44,6 @@ class ItemInformationDialog(context: Context, val item: Item) : Dialog(context) 
                 binding.fromItemTextView.visibility = View.GONE
             }
         }
-
-        binding.dialog = this
-        setContentView(binding.root)
 
         instance?.cancel()
         instance = this
