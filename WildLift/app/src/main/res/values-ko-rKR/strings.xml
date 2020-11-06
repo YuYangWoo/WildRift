@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WildLift</string>
+    <string name="app_name">와일드리프트</string>
     <string name="champion_ahri">아리</string>
     <string name="coin">코인</string>
     <string name="from_item">하위 아이템</string>
@@ -18,4 +18,5 @@
     <string name="combination_cost">조합 가격</string>
     <string name="sell_cost">판매 가격</string>
     <string name="search">검색</string>
+    <string name="name">이름</string>
 </resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "554975482467",
+    "firebase_url": "https://wildrift-87678.firebaseio.com",
+    "project_id": "wildrift-87678",
+    "storage_bucket": "wildrift-87678.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554975482467:android:886c0fe00ada04eb9b1e56",
+        "android_client_info": {
+          "package_name": "com.cookandroid.wildlift"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "554975482467-dkgj34ckenk7j56hd27i7eil3mrc3uns.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cookandroid.wildlift",
+            "certificate_hash": "96c35584c60d5bb2edcc6169eb5018f60e6722d4"
+          }
+        },
+        {
+          "client_id": "554975482467-1vt3t6icuqa90cs47fgpo9lfufqehurn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7IirKTzEGE9hDEieD2tpZNdRK552ZiGg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "554975482467-1vt3t6icuqa90cs47fgpo9lfufqehurn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
