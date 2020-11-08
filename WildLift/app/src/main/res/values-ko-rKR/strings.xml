@@ -25,4 +25,5 @@
     <string name="champion_list_BOTTOM">원거리 딜러</string>
     <string name="champion_list_SUPPORT">서포터</string>
     <string name="champion_list_tanker">탱커</string>
+    <string name="magic_shoes">마법 부여 신발</string>
 </resources>

@@ -45,6 +45,7 @@
 
                     <TextView
                         style="@style/LevelTextView"
+                        android:id="@+id/middleTextView"
                         android:text="@string/middle_item"/>
 
                     <androidx.recyclerview.widget.RecyclerView
