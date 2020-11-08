@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 object FirebaseSingleton {
+    var isItemFinished: Boolean = false
     val itemList = ArrayList<Item>()
 
     fun init() {
@@ -20,6 +21,8 @@ object FirebaseSingleton {
                     for (value in map.values) {
                         itemList.add(ItemFactory.createFromHashMap(value))
                     }
+
+                    isItemFinished = true
                 }
 
                 override fun onCancelled(error: DatabaseError) {
