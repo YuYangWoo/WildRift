@@ -1,8 +1,9 @@
 package com.cookandroid.wildlift.champion
 
-class ChampionItem(var championName: String,
-                   var championPosition: String,
-                   var championPhoto: String,
-                   var ip: String,
-                   var rp: String
+class ChampionItem(
+    var image: String? = null,
+    var ip: String? = null,
+    var name: String? = null,
+    var position: String? = null,
+    var rp: String? = null
 )

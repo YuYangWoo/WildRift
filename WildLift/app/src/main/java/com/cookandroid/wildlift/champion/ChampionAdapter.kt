@@ -1,6 +1,7 @@
 package com.cookandroid.wildlift.champion
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cookandroid.wildlift.R
 
-class CustomAdapter(private val championList: ArrayList<ChampionItem>, private val context: Context) : RecyclerView.Adapter<CustomAdapter.CustomViewHolder>() {
+class ChampionAdapter(private val championList: ArrayList<ChampionItem>, private val context: Context) : RecyclerView.Adapter<ChampionAdapter.CustomViewHolder>() {
 
     // 실제 리스트뷰가 어댑터에 연결된 다음에 뷰 홀더를 최초로 만들어낸다.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
@@ -32,11 +33,12 @@ class CustomAdapter(private val championList: ArrayList<ChampionItem>, private v
 //        holder.time.text = logList[position].logTime
 
 
+        Log.d("test", championList[position].ip.toString())
                     Glide.with(holder.itemView) // 띄어줄 뷰를 명시
-                .load(R.drawable.ic_menu_send) // 이미지 주소
+                .load(championList[position].image) // 이미지 주소
                 .into(holder.photo) // list_log의 imageView에 띄우기
-        holder.txtChampionName.text = championList[position].championName
-        holder.txtChampionPosition.text = championList[position].championPosition
+        holder.txtChampionName.text = championList[position].name
+        holder.txtChampionPosition.text = championList[position].position
         holder.txtChampionIP.text = championList[position].ip
         holder.txtChampionRp.text = championList[position].rp
     }
