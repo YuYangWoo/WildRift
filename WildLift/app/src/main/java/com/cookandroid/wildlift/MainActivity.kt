@@ -12,7 +12,9 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.cookandroid.wildlift.champion.ChampionActivity
 import com.cookandroid.wildlift.item.ItemActivity
+import com.cookandroid.wildlift.singleton.FirebaseSingleton
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.content_main)
-
+        FirebaseSingleton.init()
         title = resources.getString(R.string.app_name)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -39,9 +41,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         //아이템 선택 이벤트 호출
         navigationView.setNavigationItemSelectedListener(this)
-
-        database = FirebaseDatabase.getInstance()
-        databaseReference = database.getReference("ItemList").child("labadon")
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
