@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.selection.SelectionTracker
+import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.NetworkResponse
 import com.android.volley.Request
@@ -38,7 +40,7 @@ class ItemAdapter : RecyclerView.Adapter<ItemHolder>() {
     }
 
     override fun getItemId(position: Int): Long {
-        return list[position].id.toLong()
+        return list[position].name.hashCode().toLong()
     }
 
     override fun getItemViewType(position: Int): Int {

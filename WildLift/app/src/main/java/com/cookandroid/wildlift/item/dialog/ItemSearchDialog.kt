@@ -1,19 +1,21 @@
 package com.cookandroid.wildlift.item.dialog
 
-import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cookandroid.wildlift.R
 import com.cookandroid.wildlift.base.BaseDialog
 import com.cookandroid.wildlift.databinding.DialogItemSearchBinding
 import com.cookandroid.wildlift.item.Item
 import com.cookandroid.wildlift.item.ItemAdapter
-import com.cookandroid.wildlift.item.ItemTestDB
+import com.cookandroid.wildlift.item.ItemFactory
+import com.cookandroid.wildlift.singleton.FirebaseSingleton
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class ItemSearchDialog(context: Context) : BaseDialog<DialogItemSearchBinding>(context, R.layout.dialog_item_search) {
     private val adapter by lazy { ItemAdapter() }
@@ -33,8 +35,8 @@ class ItemSearchDialog(context: Context) : BaseDialog<DialogItemSearchBinding>(c
                 }
 
                 ArrayList<Item>().apply {
-                    for (item in ItemTestDB.list) {
-                        if (item.name.contains(s, true)) {
+                    for (item in FirebaseSingleton.itemList) {
+                        if (item.name.contains(s)) {
                             add(item)
                         }
                     }
