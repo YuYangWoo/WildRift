@@ -12,32 +12,14 @@ object DataBindingAdapter {
     @BindingAdapter("itemImage")
     fun setItemImage(view: ImageView, item: Item) {
         Glide.with(view.context)
-            .load(item.getImageURL())
+            .load(item.imageURL)
             .error(R.drawable.ic_menu_send)
             .into(view)
     }
 
     @JvmStatic
-    @BindingAdapter("toString")
-    fun setText(view: TextView, item: Int) {
-        view.text = item.toString()
-    }
-
-    @JvmStatic
-    @BindingAdapter("totalCost")
+    @BindingAdapter("cost")
     fun setTotalCost(view: TextView, item: Item) {
-        view.text = "${view.context.getString(R.string.total_cost)} : ${String.format("%,d", item.totalCost)} "
-    }
-
-    @JvmStatic
-    @BindingAdapter("combinationCost")
-    fun setCombinationCost(view: TextView, item: Item) {
-        view.text = "${view.context.getString(R.string.combination_cost)} : ${String.format("%,d", item.combinationCost)} "
-    }
-
-    @JvmStatic
-    @BindingAdapter("sellCost")
-    fun setSellCost(view: TextView, item: Item) {
-        view.text = "${view.context.getString(R.string.sell_cost)} : ${String.format("%,d", item.sellCost)} "
+        view.text = "${view.context.getString(R.string.total_cost)} : ${String.format("%,d", item.cost)} "
     }
 }

@@ -12,6 +12,7 @@ import com.cookandroid.wildlift.base.BaseDialog
 import com.cookandroid.wildlift.databinding.DialogItemInformationBinding
 import com.cookandroid.wildlift.item.Item
 import com.cookandroid.wildlift.item.ItemAdapter
+import com.cookandroid.wildlift.singleton.FirebaseSingleton
 
 class ItemInformationDialog(context: Context, val item: Item) : BaseDialog<DialogItemInformationBinding>(context, R.layout.dialog_item_information) {
     companion object {
@@ -23,7 +24,16 @@ class ItemInformationDialog(context: Context, val item: Item) : BaseDialog<Dialo
 
         with(binding.intoRecyclerView) {
             adapter = ItemAdapter().apply {
-                list = item.into
+                val list = ArrayList<Item>()
+                for (name in item.into) {
+                    for (item in FirebaseSingleton.itemList) {
+                        if (item.name == name) {
+                            list.add(item)
+                        }
+                    }
+                }
+
+                this.list = list
             }
 
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -35,7 +45,17 @@ class ItemInformationDialog(context: Context, val item: Item) : BaseDialog<Dialo
 
         with(binding.fromRecyclerView) {
             adapter = ItemAdapter().apply {
-                list = item.from
+                val list = ArrayList<Item>()
+
+                for (name in item.from) {
+                    for (item in FirebaseSingleton.itemList) {
+                        if (item.name == name) {
+                            list.add(item)
+                        }
+                    }
+                }
+
+                this.list = list
             }
 
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
