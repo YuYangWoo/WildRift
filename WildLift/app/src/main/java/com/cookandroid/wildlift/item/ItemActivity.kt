@@ -12,6 +12,7 @@ import com.cookandroid.wildlift.base.BaseActivity
 import com.cookandroid.wildlift.databinding.ActivityItemBinding
 import com.cookandroid.wildlift.item.dialog.ItemSearchDialog
 import com.cookandroid.wildlift.item.fragment.*
+import com.cookandroid.wildlift.singleton.FirebaseSingleton
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ItemActivity : BaseActivity<ActivityItemBinding>(R.layout.activity_item) {
@@ -20,6 +21,7 @@ class ItemActivity : BaseActivity<ActivityItemBinding>(R.layout.activity_item) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
+        while (!FirebaseSingleton.isItemFinished) {}
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
