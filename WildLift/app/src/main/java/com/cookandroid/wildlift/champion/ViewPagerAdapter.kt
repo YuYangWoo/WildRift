@@ -12,7 +12,7 @@ class ViewPagerAdapter(fragmentManager: FragmentManager?, lifecycle: Lifecycle)
 
     // Fragment를 담는 list 생성
     val fragmentList = arrayOf(
-        ChampionListFragment(R.string.champion_list_ASSASSIN), ChampionListFragment(R.string.champion_list_WIZARD),
+        ChampionListFragment(R.string.champion_list_All),ChampionListFragment(R.string.champion_list_ASSASSIN), ChampionListFragment(R.string.champion_list_WIZARD),
         ChampionListFragment(R.string.champion_list_WARRIOR), ChampionListFragment(R.string.champion_list_BOTTOM), ChampionListFragment(R.string.champion_list_SUPPORT), ChampionListFragment(R.string.champion_list_tanker)
     )
 

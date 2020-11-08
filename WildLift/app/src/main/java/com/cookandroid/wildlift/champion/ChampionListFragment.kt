@@ -21,11 +21,19 @@ class ChampionListFragment(val tabTitle: Int) : Fragment() {
 
     // 챔피언 리스트
     private var championList: ArrayList<ChampionItem> = ArrayList()
+    private var list = ArrayList<ChampionItem>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view          = inflater.inflate(R.layout.fragment_champion_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_champion_list, container, false)
+
+        var recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+
+        // LinearLayoutManager 객체 생성 후 layoutManager에 대입 및 recyclerView 고정크기 On
+        recyclerView.setHasFixedSize(true)
+        layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = layoutManager
 
         // 파이어베이스 데이터베이스 연동
         database = FirebaseDatabase.getInstance()
@@ -39,12 +47,28 @@ class ChampionListFragment(val tabTitle: Int) : Fragment() {
             // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 championList.clear()
-
+                list.clear()
                 for (snapshot in dataSnapshot.children) { // 반복문으로 데이터 List를 추출해냄
-                    val champion = snapshot.getValue(ChampionItem::class.java) // 만들어뒀던 객체에 데이터를 담는다.
+                    val champion =
+                        snapshot.getValue(ChampionItem::class.java) // 만들어뒀던 객체에 데이터를 담는다.
                     championList.add(champion!!) // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
                 }
 
+                championAdapter = when (tabTitle) {
+                    R.string.champion_list_All -> ChampionAdapter(championList, context!!)
+                    else -> {
+                        for (item in championList) {
+                            var countList = item.position!!.split(",")
+                            for (pos in countList) {
+                                if (pos == getString(tabTitle)) {
+                                    list.add(item)
+                                }
+                            }
+                        }
+                        ChampionAdapter(list, context!!)
+                    }
+                }
+                recyclerView.adapter = championAdapter
                 championAdapter.notifyDataSetChanged() // 리스트 저장 및 새로고침해야 반영이 됨
             }
 
@@ -54,27 +78,6 @@ class ChampionListFragment(val tabTitle: Int) : Fragment() {
             }
         })
 
-        // tabTitle이 선택 된다면
-        when(tabTitle) {
-//            R.string.champion_list_All      -> championAdapter = CustomAdapter(championList,context!!)
-            R.string.champion_list_ASSASSIN -> championAdapter = ChampionAdapter(championList,context!!)
-//            R.string.champion_list_WARRIOR  -> championAdapter = ChampionAdapter(warriorList,context!!)
-//            R.string.champion_list_WIZARD   -> championAdapter = ChampionAdapter(wizardList,context!!)
-//            R.string.champion_list_BOTTOM   -> championAdapter = ChampionAdapter(bottomList,context!!)
-//            R.string.champion_list_SUPPORT  -> championAdapter = ChampionAdapter(supportList,context!!)
-//            R.string.champion_list_tanker   -> championAdapter = ChampionAdapter(tankerList,context!!)
-        }
-
-        var recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-
-        // LinearLayoutManager 객체 생성 후 layoutManager에 대입 및 recyclerView 고정크기 On
-        recyclerView.setHasFixedSize(true)
-        layoutManager = LinearLayoutManager(context)
-//        (layoutManager as LinearLayoutManager).stackFromEnd = true // 처음부터 끝까지
-        recyclerView.layoutManager = layoutManager
-
-
-        recyclerView.adapter = championAdapter
         return view
     }
 }
