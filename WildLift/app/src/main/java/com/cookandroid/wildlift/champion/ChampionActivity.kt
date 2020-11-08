@@ -24,10 +24,6 @@ class ChampionActivity : AppCompatActivity() {
 
         // 변수 Adapter에 ViewPagerAdapter를 객체화
 
-
-
-
-
         val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
         viewPager.adapter = adapter
 

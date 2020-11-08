@@ -41,25 +41,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         //아이템 선택 이벤트 호출
         navigationView.setNavigationItemSelectedListener(this)
-
-//        database = FirebaseDatabase.getInstance()
-//        databaseReference = database.getReference("ItemList")
-//        databaseReference
-//        Log.d("test",databaseReference)
-//        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                var abc = snapshot.value
-//                Log.d("test", abc.toString())
-//
-//
-//            }
-//            override fun onCancelled(error: DatabaseError) {
-//
-//            }
-//        })
-//        var a =
-//        Toast.makeText(this,databaseReference.toString(),Toast.LENGTH_LONG).show()
-
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
