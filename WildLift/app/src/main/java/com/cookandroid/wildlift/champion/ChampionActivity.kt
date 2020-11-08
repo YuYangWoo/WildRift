@@ -1,13 +1,11 @@
 package com.cookandroid.wildlift.champion
 
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.cookandroid.wildlift.R
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_champion.*
 
@@ -20,14 +18,14 @@ class ChampionActivity : AppCompatActivity() {
         // ActionBar Title 변경
         title = resources.getString(R.string.app_name)
 
-        // ActionBar Home 버튼 Enable
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        // 툴바 만들기
         val toolbar = findViewById<Toolbar>(R.id.toolbar2)
         setSupportActionBar(toolbar)
 
-        // 변수 Adapter에 ViewPagerAdapter를 객체화
+        // ActionBar Home 버튼 Enable
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        // 변수 Adapter에 ViewPagerAdapter를 객체화
         val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
         viewPager.adapter = adapter
 
@@ -35,7 +33,12 @@ class ChampionActivity : AppCompatActivity() {
         TabLayoutMediator(tabLyChampion, viewPager, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
             tab.text = getString(adapter.fragmentList[position].tabTitle)
         }).attach()
+    }
 
+    // 검색 만들기
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menu?.add(0, R.string.search, 0, R.string.search)?.setIcon(R.drawable.ic_search)?.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+        return super.onCreateOptionsMenu(menu)
     }
 
     // ActionBar ItemSelected 이벤트
@@ -46,8 +49,11 @@ class ChampionActivity : AppCompatActivity() {
                 onBackPressed()
                 return true
             }
+//            R.string.search -> {
+//                ChampionSearchDialog(this,).show()
+//                true
+//            }
         }
         return super.onOptionsItemSelected(item)
     }
-
 }
