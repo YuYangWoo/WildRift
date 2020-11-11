@@ -10,13 +10,13 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_champion.*
 
 class ChampionActivity : AppCompatActivity() {
-    private lateinit var championInfo: ArrayList<ChampionItem>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_champion)
 
         // ActionBar Title 변경
-        title = resources.getString(R.string.app_name)
+        title = resources.getString(R.string.champion_info_title)
 
         // 툴바 만들기
         val toolbar = findViewById<Toolbar>(R.id.toolbar2)

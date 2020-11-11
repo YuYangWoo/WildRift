@@ -1,12 +1,14 @@
 package com.cookandroid.wildlift.champion
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cookandroid.wildlift.R
@@ -39,19 +41,22 @@ class ChampionAdapter(private val championList: ArrayList<ChampionItem>, private
         var txtChampionIP:TextView = itemView.findViewById(R.id.txtIP)
         var txtChampionRp:TextView = itemView.findViewById(R.id.txtRp)
 
-//        init {
-//            itemView.setOnClickListener {
-//                var pos = adapterPosition
-//                if (pos != RecyclerView.NO_POSITION) {
-//                    var item = logList[pos]
-//                    var photoList = logList[pos].logPhoto!!.split(",".toRegex()).toTypedArray()
-//                    var intent = Intent(itemView.context, LogFunction::class.java)
-//                    intent.putExtra("logPhoto", photoList)
-//                    intent.putExtra("logTime", item.logTime)
-//                    ContextCompat.startActivity(itemView.context, intent, null)
-//                }
-//            }
-//        }
+        init {
+            itemView.setOnClickListener {
+                var pos = adapterPosition
+                if (pos != RecyclerView.NO_POSITION) {
+                    var item = championList[pos]
+                    var intent = Intent(itemView.context, ChampionInfo::class.java)
+                    intent.putExtra("championImage", item.image)
+                    intent.putExtra("championName", item.name)
+                    intent.putExtra("championPosition", item.position)
+                    intent.putExtra("championIP", item.ip)
+                    intent.putExtra("championRp", item.rp)
+
+                    ContextCompat.startActivity(itemView.context, intent, null)
+                }
+            }
+        }
     }
 
     // arrayList의 크기를 가져온다

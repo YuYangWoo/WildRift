@@ -7,8 +7,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.cookandroid.wildlift.R
 
-class ViewPagerAdapter(fragmentManager: FragmentManager?, lifecycle: Lifecycle)
-    : FragmentStateAdapter(fragmentManager!!, lifecycle) {
+class ViewPagerAdapter(fragmentManager: FragmentManager?, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager!!, lifecycle) {
 
     // Fragment를 담는 list 생성
     val fragmentList = arrayOf(
@@ -26,4 +25,5 @@ class ViewPagerAdapter(fragmentManager: FragmentManager?, lifecycle: Lifecycle)
     override fun getItemCount(): Int {
         return fragmentList.size
     }
+
 }
