@@ -23,6 +23,7 @@
         <activity android:name=".item.ItemActivity"></activity>
         <activity android:name=".RunesActivity"></activity>
         <activity android:name=".champion.ChampionInfo"></activity>
+        <activity android:name=".SpellActivity"></activity>
     </application>
 
 </manifest>
