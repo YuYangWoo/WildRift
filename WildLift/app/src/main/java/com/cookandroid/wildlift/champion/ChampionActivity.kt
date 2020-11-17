@@ -16,7 +16,7 @@ class ChampionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_champion)
 
         // ActionBar Title 변경
-        title = resources.getString(R.string.champion_info_title)
+        title = resources.getString(R.string.champion_title)
 
         // 툴바 만들기
         val toolbar = findViewById<Toolbar>(R.id.toolbar2)
