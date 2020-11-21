@@ -40,6 +40,8 @@
     <string name="champion_list_SUPPORT">Support</string>
     <string name="champion_list_tanker">Tanker</string>
     <string name="magic_shoes">Magic Shoes</string>
+    <string name="champion_title">ChampionList</string>
+    <string name="champion_info_title">ChampionInfo</string>
 
 
 </resources>

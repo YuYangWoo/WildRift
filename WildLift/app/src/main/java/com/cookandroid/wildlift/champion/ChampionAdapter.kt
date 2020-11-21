@@ -1,12 +1,14 @@
 package com.cookandroid.wildlift.champion
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cookandroid.wildlift.R
@@ -21,22 +23,10 @@ class ChampionAdapter(private val championList: ArrayList<ChampionItem>, private
 
     // ImageView를 Glide를 사용하여 로드하고 info와 time도 대입시킨다.
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-//        var photoList = logList[position].logPhoto!!.split(",".toRegex()).toTypedArray()
-//        var imageReference = Firebase.storage("gs://cerberus-592f9.appspot.com").reference.child("cerb1/" + photoList[0])
-//        imageReference.downloadUrl.addOnSuccessListener { Uri ->
-//            val imageURL = Uri.toString()
-//            Glide.with(holder.itemView) // 띄어줄 뷰를 명시
-//                .load(imageURL) // 이미지 주소
-//                .into(holder.photo) // list_log의 imageView에 띄우기
-//        }
-//        holder.info.text = logList[position].logInfo
-//        holder.time.text = logList[position].logTime
+        Glide.with(holder.itemView) // 띄어줄 뷰를 명시
+        .load(championList[position].image) // 이미지 주소
+        .into(holder.photo) // list_log의 imageView에 띄우기
 
-
-        Log.d("test", championList[position].ip.toString())
-                    Glide.with(holder.itemView) // 띄어줄 뷰를 명시
-                .load(championList[position].image) // 이미지 주소
-                .into(holder.photo) // list_log의 imageView에 띄우기
         holder.txtChampionName.text = championList[position].name
         holder.txtChampionPosition.text = championList[position].position
         holder.txtChampionIP.text = championList[position].ip
@@ -51,19 +41,22 @@ class ChampionAdapter(private val championList: ArrayList<ChampionItem>, private
         var txtChampionIP:TextView = itemView.findViewById(R.id.txtIP)
         var txtChampionRp:TextView = itemView.findViewById(R.id.txtRp)
 
-//        init {
-//            itemView.setOnClickListener {
-//                var pos = adapterPosition
-//                if (pos != RecyclerView.NO_POSITION) {
-//                    var item = logList[pos]
-//                    var photoList = logList[pos].logPhoto!!.split(",".toRegex()).toTypedArray()
-//                    var intent = Intent(itemView.context, LogFunction::class.java)
-//                    intent.putExtra("logPhoto", photoList)
-//                    intent.putExtra("logTime", item.logTime)
-//                    ContextCompat.startActivity(itemView.context, intent, null)
-//                }
-//            }
-//        }
+        init {
+            itemView.setOnClickListener {
+                var pos = adapterPosition
+                if (pos != RecyclerView.NO_POSITION) {
+                    var item = championList[pos]
+                    var intent = Intent(itemView.context, ChampionInfo::class.java)
+                    intent.putExtra("championImage", item.image)
+                    intent.putExtra("championName", item.name)
+                    intent.putExtra("championPosition", item.position)
+                    intent.putExtra("championIP", item.ip)
+                    intent.putExtra("championRp", item.rp)
+
+                    ContextCompat.startActivity(itemView.context, intent, null)
+                }
+            }
+        }
     }
 
     // arrayList의 크기를 가져온다

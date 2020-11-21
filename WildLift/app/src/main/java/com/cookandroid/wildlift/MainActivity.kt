@@ -1,11 +1,16 @@
 package com.cookandroid.wildlift
 
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
 import android.view.MenuItem
-import android.widget.Toast
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -14,8 +19,9 @@ import com.cookandroid.wildlift.champion.ChampionActivity
 import com.cookandroid.wildlift.item.ItemActivity
 import com.cookandroid.wildlift.singleton.FirebaseSingleton
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.FirebaseApp
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.dialog_rune_spell.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -53,7 +59,28 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(Intent(this, ItemActivity::class.java))
             }
             R.id.runesSpell -> {
-                startActivity(Intent(this, RunesActivity::class.java))
+//             var builder = AlertDialog.Builder(this)
+//                var dialog = Dialog(applicationContext)
+//                builder.setTitle("선택하세요")
+//                builder.setView(layoutInflater.inflate(R.layout.dialog_rune_spell, null))
+//
+//                builder.show()
+                val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val view = inflater.inflate(R.layout.dialog_rune_spell, null)
+                val rune = view.findViewById<Button>(R.id.btnRune)
+                val spell = view.findViewById<Button>(R.id.btnSpell)
+                rune.setOnClickListener {
+                    startActivity(Intent(this, RunesActivity::class.java))
+                }
+
+                spell.setOnClickListener {
+                    startActivity(Intent(this,SpellActivity::class.java))
+                }
+                val alertDialog = AlertDialog.Builder(this)
+                    .setTitle("선택하세요")
+                    .create()
+                alertDialog.setView(view)
+                alertDialog.show()
             }
         }
 
