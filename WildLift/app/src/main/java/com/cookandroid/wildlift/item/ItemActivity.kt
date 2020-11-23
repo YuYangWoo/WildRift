@@ -21,7 +21,6 @@ class ItemActivity : BaseActivity<ActivityItemBinding>(R.layout.activity_item) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
-        while (!FirebaseSingleton.isItemFinished) {}
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

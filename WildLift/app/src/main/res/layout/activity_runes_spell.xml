@@ -5,7 +5,7 @@
     <data>
         <variable
             name="activity"
-            type="com.cookandroid.wildlift.RunesActivity" />
+            type="com.cookandroid.wildlift.rune.RunesActivity" />
     </data>
 
     <LinearLayout
@@ -19,5 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 </layout>

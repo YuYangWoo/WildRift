@@ -6,6 +6,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.cookandroid.wildlift.R
 import com.cookandroid.wildlift.item.Item
+import com.cookandroid.wildlift.rune.Rune
 
 object DataBindingAdapter {
     @JvmStatic
@@ -13,6 +14,15 @@ object DataBindingAdapter {
     fun setItemImage(view: ImageView, item: Item) {
         Glide.with(view.context)
             .load(item.imageURL)
+            .error(R.drawable.ic_menu_send)
+            .into(view)
+    }
+
+    @JvmStatic
+    @BindingAdapter("itemImage")
+    fun setRuneImage(view: ImageView, rune: Rune) {
+        Glide.with(view.context)
+            .load(rune.imageURL)
             .error(R.drawable.ic_menu_send)
             .into(view)
     }
