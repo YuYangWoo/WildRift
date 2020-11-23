@@ -1,15 +1,20 @@
 package com.cookandroid.wildlift
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.cookandroid.wildlift.base.BaseActivity
+import com.cookandroid.wildlift.databinding.ActivityRunesSpellBinding
 
-class RunesActivity : AppCompatActivity() {
-
+class RunesActivity : BaseActivity<ActivityRunesSpellBinding>(R.layout.activity_runes_spell) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_runes_spell)
-
-
+        init()
     }
 
+    private fun init() {
+        initActionBar()
+    }
+
+    private fun initActionBar() {
+        setSupportActionBar(binding.toolbar)
+    }
 }
