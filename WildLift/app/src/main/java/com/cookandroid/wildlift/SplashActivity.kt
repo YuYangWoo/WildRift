@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentSender
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
@@ -13,6 +14,7 @@ import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.InstallState
 import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.ActivityResult
+import com.google.android.play.core.install.model.ActivityResult.RESULT_IN_APP_UPDATE_FAILED
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE
 import com.google.android.play.core.install.model.InstallStatus
@@ -38,7 +40,7 @@ class SplashActivity : AppCompatActivity(), InstallStateUpdatedListener {
                 Activity.RESULT_CANCELED -> {
                     popupSnackbarForState("You cancel for update new version.", Snackbar.LENGTH_SHORT)
                 }
-                ActivityResult.RESULT_IN_APP_UPDATE_FAILED -> {
+               RESULT_IN_APP_UPDATE_FAILED -> {
                     popupSnackbarForState("App download failed.", Snackbar.LENGTH_SHORT)
                 }
             }
@@ -57,11 +59,16 @@ class SplashActivity : AppCompatActivity(), InstallStateUpdatedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
-        getInAppUpdateWithPlayStore()
+// 2초 지나고 화면 전환
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        },splashTime)
+        //getInAppUpdateWithPlayStore()
     }
     // 업데이트 유형에 따른 업데이트 제안
     private fun getInAppUpdateWithPlayStore() {
+        /*
         val appUpdateInfoTask = appUpdateManager.appUpdateInfo
         appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
             if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(
@@ -80,13 +87,18 @@ class SplashActivity : AppCompatActivity(), InstallStateUpdatedListener {
             // 업데이트 없음
             else {
                 // 2초 지나고 화면 전환
-                Handler().postDelayed({
+                Handler(Looper.getMainLooper()).postDelayed({
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 },splashTime)
+
             }
         }
+
+         */
     }
+
+    /*
     //업데이트 중 취소나 닫으면 백그라운드에서 업데이트 계속하여 실행
     override fun onResume() {
         super.onResume()
@@ -106,20 +118,29 @@ class SplashActivity : AppCompatActivity(), InstallStateUpdatedListener {
             }
     }
 
+     */
+/*
     override fun onDestroy() {
+
         super.onDestroy()
         appUpdateManager.unregisterListener(this)
     }
 
+ */
+
     private fun popupSnackbarForState(text: String, length: Int) {
+        /*
         Snackbar.make(
             findViewById(R.id.cstLyMain),
             text,
             length
         ).show()
+
+         */
     }
 
     private fun popupSnackbarForCompleteUpdate() {
+        /*
         Snackbar.make(
             findViewById(R.id.cstLyMain),
             "An update has just been downloaded from Play Store.",
@@ -131,6 +152,8 @@ class SplashActivity : AppCompatActivity(), InstallStateUpdatedListener {
             }
             show()
         }
+        */
+
     }
 
 }

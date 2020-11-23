@@ -38,12 +38,6 @@ class ChampionListFragment(val tabTitle: Int) : Fragment() {
         recyclerView.layoutManager = layoutManager
 
         list.clear()
-        // 파이어베이스 데이터베이스 연동
-        database = FirebaseDatabase.getInstance()
-
-        // DB 테이블 연결
-        dbChampion = database.getReference("championList")
-
         recyclerViewAdapter = when (tabTitle) {
             R.string.champion_list_All -> {
                 ChampionAdapter(championList)
