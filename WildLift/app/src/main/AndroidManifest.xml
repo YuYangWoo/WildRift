@@ -12,14 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".SplashActivity"
+            android:label="와일드리프트">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".champion.ChampionActivity"></activity>
+        <activity android:name=".MainActivity"
+            android:label = "와일드리프트"/>
+        <activity android:name=".champion.ChampionActivity"
+          android:windowSoftInputMode="adjustNothing"></activity>
         <activity android:name=".item.ItemActivity"></activity>
         <activity android:name=".RunesActivity"></activity>
         <activity android:name=".champion.ChampionInfo"></activity>

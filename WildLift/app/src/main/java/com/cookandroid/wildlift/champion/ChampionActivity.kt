@@ -35,12 +35,6 @@ class ChampionActivity : AppCompatActivity() {
         }).attach()
     }
 
-    // 검색 만들기
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menu?.add(0, R.string.search, 0, R.string.search)?.setIcon(R.drawable.ic_search)?.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-        return super.onCreateOptionsMenu(menu)
-    }
-
     // ActionBar ItemSelected 이벤트
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
@@ -49,10 +43,6 @@ class ChampionActivity : AppCompatActivity() {
                 onBackPressed()
                 return true
             }
-//            R.string.search -> {
-//                ChampionSearchDialog(this,).show()
-//                true
-//            }
         }
         return super.onOptionsItemSelected(item)
     }

@@ -1,16 +1,16 @@
 package com.cookandroid.wildlift.champion
 
 import android.util.Log
-import com.cookandroid.wildlift.R
 import com.google.firebase.database.*
 
-private lateinit var database: FirebaseDatabase
-private lateinit var dbChampion: DatabaseReference
-private var championList: ArrayList<ChampionItem> = ArrayList()
+
+
 object ChampionFactory {
+    var championList: ArrayList<ChampionItem> = ArrayList()
+    private var database: FirebaseDatabase = FirebaseDatabase.getInstance()
+    private lateinit var dbChampion: DatabaseReference
     init{
         // 파이어베이스 데이터베이스 연동
-        database = FirebaseDatabase.getInstance()
 
         // DB 테이블 연결
         dbChampion = database.getReference("championList")
