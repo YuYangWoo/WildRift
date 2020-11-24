@@ -42,6 +42,11 @@
     <string name="magic_shoes">Magic Shoes</string>
     <string name="champion_title">ChampionList</string>
     <string name="champion_info_title">ChampionInfo</string>
+    <string name="mainRune">핵심</string>
+    <string name="subRune">보조</string>
+    <string name="controlRune">지배</string>
+    <string name="resolutionRune">결의</string>
+    <string name="inspirationRune">영감</string>
 
 
 </resources>
