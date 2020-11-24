@@ -3,14 +3,16 @@ package com.cookandroid.wildlift.singleton
 import android.util.Log
 import com.cookandroid.wildlift.item.Item
 import com.cookandroid.wildlift.item.ItemFactory
+import com.cookandroid.wildlift.rune.Rune
+import com.cookandroid.wildlift.rune.RuneFactory
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 object FirebaseSingleton {
-    var isItemFinished: Boolean = false
     val itemList = ArrayList<Item>()
+    val runeList = ArrayList<Rune>()
 
     fun init() {
         FirebaseDatabase.getInstance()
@@ -22,7 +24,22 @@ object FirebaseSingleton {
                         itemList.add(ItemFactory.createFromHashMap(value))
                     }
 
-                    isItemFinished = true
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
+
+        FirebaseDatabase.getInstance()
+            .getReference("runeList")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val map = snapshot.value as HashMap<String, HashMap<String, Any>>
+                    for (value in map.values) {
+                        runeList.add(RuneFactory.createFromHashMap(value))
+                    }
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {
