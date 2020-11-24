@@ -13,7 +13,7 @@
         android:layout_marginStart="160dp"
         android:layout_marginTop="232dp"
         android:layout_marginEnd="166dp"
-        android:text="태종 하트 양우"
+        android:text="태종 하트 양우dsdas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
