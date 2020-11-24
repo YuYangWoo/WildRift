@@ -8,12 +8,12 @@ import com.cookandroid.wildlift.R
 import com.cookandroid.wildlift.base.BaseHolder
 import kotlin.properties.Delegates
 
-class RuneAdapter : RecyclerView.Adapter<BaseHolder<*, Rune>>() {
+class RuneAdapter : RecyclerView.Adapter<RuneHolder<*>>() {
     var list by Delegates.observable(listOf<Rune>()) { _, _, _ ->
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<*, Rune> {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RuneHolder<*> {
         return when(viewType) {
             R.layout.holder_main_rune -> {
                 MainRuneHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false))
@@ -24,7 +24,7 @@ class RuneAdapter : RecyclerView.Adapter<BaseHolder<*, Rune>>() {
         }
     }
 
-    override fun onBindViewHolder(holder: BaseHolder<*, Rune>, position: Int) {
+    override fun onBindViewHolder(holder: RuneHolder<*>, position: Int) {
         holder.bind(list[position])
     }
 
