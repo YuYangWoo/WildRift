@@ -11,6 +11,7 @@ import com.cookandroid.wildlift.R
 
 abstract class BaseDialog<T: ViewDataBinding>(context: Context, private val layoutId: Int) : Dialog(context) {
     protected lateinit var binding: T
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.inflate(LayoutInflater.from(context), layoutId, null, false)

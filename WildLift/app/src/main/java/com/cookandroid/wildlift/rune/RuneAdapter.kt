@@ -5,17 +5,26 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.wildlift.R
-import com.cookandroid.wildlift.singleton.FirebaseSingleton
+import com.cookandroid.wildlift.base.BaseHolder
 import kotlin.properties.Delegates
 
-class RuneAdapter : RecyclerView.Adapter<RuneHolder>() {
-    private val list = FirebaseSingleton.runeList
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RuneHolder {
-        return RuneHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false))
+class RuneAdapter : RecyclerView.Adapter<BaseHolder<*, Rune>>() {
+    var list by Delegates.observable(listOf<Rune>()) { _, _, _ ->
+        notifyDataSetChanged()
     }
 
-    override fun onBindViewHolder(holder: RuneHolder, position: Int) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<*, Rune> {
+        return when(viewType) {
+            R.layout.holder_main_rune -> {
+                MainRuneHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false))
+            }
+            else -> {
+                SubRuneHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false))
+            }
+        }
+    }
+
+    override fun onBindViewHolder(holder: BaseHolder<*, Rune>, position: Int) {
         holder.bind(list[position])
     }
 
@@ -28,6 +37,13 @@ class RuneAdapter : RecyclerView.Adapter<RuneHolder>() {
     }
 
     override fun getItemViewType(position: Int): Int {
-        return R.layout.holder_rune
+        return when(list[position].type) {
+            "핵심" -> {
+                R.layout.holder_main_rune
+            }
+            else -> {
+                R.layout.holder_sub_rune
+            }
+        }
     }
 }

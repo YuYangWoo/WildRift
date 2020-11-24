@@ -5,14 +5,14 @@
     <data>
         <variable
             name="holder"
-            type="com.cookandroid.wildlift.rune.RuneHolder" />
+            type="com.cookandroid.wildlift.rune.SubRuneHolder" />
     </data>
 
     <ImageView
         itemImage="@{holder.item}"
 
         android:layout_margin="5dp"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:contentDescription="@string/image" />
 </layout>

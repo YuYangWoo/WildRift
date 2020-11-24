@@ -31,7 +31,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/finalRecyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="400dp"/>
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -51,7 +51,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/middleRecyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"/>
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -70,7 +70,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/baseRecyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"/>
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
