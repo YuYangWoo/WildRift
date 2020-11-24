@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.cookandroid.wildlift.champion.ChampionFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.InstallState
@@ -28,8 +29,19 @@ class SplashActivity : AppCompatActivity(), InstallStateUpdatedListener {
     private val MY_REQUEST_CODE = 100
     private val splashTime:Long = 2000
 
-    // 업데이트를 체크하는데 사용하는 객체 반환
+    var championList = ChampionFactory.championList
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash)
+// 2초 지나고 화면 전환
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        },splashTime)
+        //getInAppUpdateWithPlayStore()
+    }
 
+    // 업데이트를 체크하는데 사용하는 객체 반환
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == MY_REQUEST_CODE) {
@@ -56,16 +68,7 @@ class SplashActivity : AppCompatActivity(), InstallStateUpdatedListener {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-// 2초 지나고 화면 전환
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        },splashTime)
-        //getInAppUpdateWithPlayStore()
-    }
+
     // 업데이트 유형에 따른 업데이트 제안
     private fun getInAppUpdateWithPlayStore() {
         /*

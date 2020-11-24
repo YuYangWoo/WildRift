@@ -12,6 +12,7 @@ import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.wildlift.R
+import com.cookandroid.wildlift.SplashActivity
 import com.google.firebase.database.*
 
 class ChampionListFragment(val tabTitle: Int) : Fragment() {
@@ -22,7 +23,7 @@ class ChampionListFragment(val tabTitle: Int) : Fragment() {
     private lateinit var dbChampion: DatabaseReference
     private var search = ""
     // 챔피언 리스트
-    private var championList = ChampionFactory.championList
+    private var championList = SplashActivity()
     private var list = ArrayList<ChampionItem>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,10 +41,10 @@ class ChampionListFragment(val tabTitle: Int) : Fragment() {
         list.clear()
         recyclerViewAdapter = when (tabTitle) {
             R.string.champion_list_All -> {
-                ChampionAdapter(championList)
+                ChampionAdapter(championList.championList)
             }
             else -> {
-                for (item in championList) {
+                for (item in championList.championList) {
                     var countList = item.position!!.split(",")
                     for (pos in countList) {
                         if (pos == getString(tabTitle)) {
