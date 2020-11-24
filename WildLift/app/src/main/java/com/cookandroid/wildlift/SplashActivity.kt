@@ -10,6 +10,7 @@ import android.os.Looper
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.cookandroid.wildlift.champion.ChampionFactory
+import com.cookandroid.wildlift.spell.SpellFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.InstallState
@@ -30,6 +31,7 @@ class SplashActivity : AppCompatActivity(), InstallStateUpdatedListener {
     private val splashTime:Long = 2000
 
     var championList = ChampionFactory.championList
+    var spellList = SpellFactory.spellList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
