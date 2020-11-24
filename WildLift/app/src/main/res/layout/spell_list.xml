@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="4dp"
     android:layout_marginTop="2dp"
-    android:layout_marginEnd="4dp"
+    android:layout_marginEnd="7dp"
     android:layout_marginBottom="2dp"
     android:background="?attr/selectableItemBackground">
 
@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgSpell" />
 
@@ -37,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="4dp"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/imgSpell"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,6 +49,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="1dp"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgSpell"
         app:layout_constraintTop_toBottomOf="@id/txtTopic" />
