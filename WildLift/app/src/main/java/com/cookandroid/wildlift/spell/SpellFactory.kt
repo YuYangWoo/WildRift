@@ -1,28 +1,28 @@
-package com.cookandroid.wildlift.champion
+package com.cookandroid.wildlift.spell
 
 import android.util.Log
+import com.cookandroid.wildlift.champion.ChampionFactory
+import com.cookandroid.wildlift.champion.ChampionItem
 import com.google.firebase.database.*
 
-object ChampionFactory {
-    var championList: ArrayList<ChampionItem> = ArrayList()
+object SpellFactory {
     private var database: FirebaseDatabase = FirebaseDatabase.getInstance()
-    private lateinit var dbChampion: DatabaseReference
-    init{
-        // 파이어베이스 데이터베이스 연동
-
+    private lateinit var dbSpell: DatabaseReference
+    var spellList = ArrayList<SpellItem>()
+    init {
         // DB 테이블 연결
-        dbChampion = database.getReference("championList")
+        dbSpell = database.getReference("SpellList")
 
         // logList에 DB데이터 연결
-        dbChampion.addListenerForSingleValueEvent(object : ValueEventListener {
+        dbSpell.addListenerForSingleValueEvent(object : ValueEventListener {
 
             // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                championList.clear()
+                spellList.clear()
                 for (snapshot in dataSnapshot.children) { // 반복문으로 데이터 List를 추출해냄
-                    val champion =
-                        snapshot.getValue(ChampionItem::class.java) // 만들어뒀던 객체에 데이터를 담는다.
-                    championList.add(champion!!) // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
+                    val spell =
+                        snapshot.getValue(SpellItem::class.java) // 만들어뒀던 객체에 데이터를 담는다.
+                    spellList.add(spell!!) // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
                 }
             }
 
@@ -31,5 +31,5 @@ object ChampionFactory {
                 Log.e("Error", databaseError.toException().toString())
             }
         })
-    }
+}
 }

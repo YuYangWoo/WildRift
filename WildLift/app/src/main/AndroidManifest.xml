@@ -27,7 +27,7 @@
         <activity android:name=".item.ItemActivity"></activity>
         <activity android:name=".rune.RunesActivity"></activity>
         <activity android:name=".champion.ChampionInfo"></activity>
-        <activity android:name=".SpellActivity"></activity>
+        <activity android:name=".spell.SpellActivity"></activity>
     </application>
 
 </manifest>
