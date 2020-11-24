@@ -48,36 +48,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.championInformation -> {
                 startActivity(Intent(this, ChampionActivity::class.java))
             }
             R.id.itemInformation -> {
                 startActivity(Intent(this, ItemActivity::class.java))
             }
-            R.id.runesSpell -> {
-//             var builder = AlertDialog.Builder(this)
-//                var dialog = Dialog(applicationContext)
-//                builder.setTitle("선택하세요")
-//                builder.setView(layoutInflater.inflate(R.layout.dialog_rune_spell, null))
-//
-//                builder.show()
-                val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                val view = inflater.inflate(R.layout.dialog_rune_spell, null)
-                val rune = view.findViewById<Button>(R.id.btnRune)
-                val spell = view.findViewById<Button>(R.id.btnSpell)
-                rune.setOnClickListener {
-                    startActivity(Intent(this, RunesActivity::class.java))
-                }
-
-                spell.setOnClickListener {
-                    startActivity(Intent(this,SpellActivity::class.java))
-                }
-                val alertDialog = AlertDialog.Builder(this)
-                    .setTitle("선택하세요")
-                    .create()
-                alertDialog.setView(view)
-                alertDialog.show()
+            R.id.runes -> {
+                startActivity(Intent(this, RunesActivity::class.java))
+            }
+            R.id.spell -> {
+                startActivity(Intent(this, SpellActivity::class.java))
             }
         }
 

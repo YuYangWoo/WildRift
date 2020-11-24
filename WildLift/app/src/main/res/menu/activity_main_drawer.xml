@@ -15,11 +15,15 @@
                 android:title="아이템정보"
                 ></item>
             <item
-                android:id="@+id/runesSpell"
+                android:id="@+id/runes"
                 android:icon="@drawable/ic_menu_send"
-                android:title="룬/스펠"
+                android:title="룬"
                 ></item>
-
+            <item
+                android:id="@+id/spell"
+                android:icon="@drawable/ic_menu_send"
+                android:title="스펠"
+                ></item>
 
         </menu>
     </item>
