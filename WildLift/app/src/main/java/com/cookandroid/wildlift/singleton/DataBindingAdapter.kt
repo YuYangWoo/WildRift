@@ -14,6 +14,7 @@ object DataBindingAdapter {
     fun setItemImage(view: ImageView, item: Item) {
         Glide.with(view.context)
             .load(item.imageURL)
+            .placeholder(R.drawable.ic_coin)
             .error(R.drawable.ic_menu_send)
             .into(view)
     }
