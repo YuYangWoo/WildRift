@@ -1,4 +1,4 @@
-package com.cookandroid.wildlift.champion
+package com.cookandroid.wildlift.champion.championInfo
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
