@@ -1,6 +1,7 @@
 package com.cookandroid.wildlift.champion
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,6 +62,7 @@ class ChampionAdapter constructor() : RecyclerView.Adapter<ChampionAdapter.Custo
                     intent.putExtra("championPosition", item.position)
                     intent.putExtra("championIP", item.ip)
                     intent.putExtra("championRp", item.rp)
+                    intent.putExtra("championEngName", item.engName)
 
                     ContextCompat.startActivity(itemView.context, intent, null)
                 }
