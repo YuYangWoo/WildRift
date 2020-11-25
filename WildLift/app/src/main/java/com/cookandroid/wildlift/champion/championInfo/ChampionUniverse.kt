@@ -13,6 +13,7 @@ class ChampionUniverse : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_universe)
+
         // ActionBar Title 변경
         title = "챔피언 유니버스"
 
@@ -25,6 +26,7 @@ class ChampionUniverse : AppCompatActivity() {
         // ActionBar Home 버튼 Enable
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        // 웹 뷰 적용
         webView.apply {
             webViewClient = WebViewClient()
             settings.javaScriptEnabled = true
