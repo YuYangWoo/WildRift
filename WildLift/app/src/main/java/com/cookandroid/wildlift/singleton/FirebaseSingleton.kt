@@ -11,8 +11,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 object FirebaseSingleton {
-    val itemList = ArrayList<Item>()
-    val runeList = ArrayList<Rune>()
+    var itemList = ArrayList<Item>()
+    var runeList = ArrayList<Rune>()
 
     fun init() {
         FirebaseDatabase.getInstance()
@@ -20,10 +20,11 @@ object FirebaseSingleton {
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val map = snapshot.value as HashMap<String, HashMap<String, Any>>
-                    for (value in map.values) {
-                        itemList.add(ItemFactory.createFromHashMap(value))
+                    itemList = arrayListOf<Item>().apply {
+                        map.values.forEach {
+                            add(ItemFactory.createFromHashMap(it))
+                        }
                     }
-
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -36,10 +37,11 @@ object FirebaseSingleton {
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val map = snapshot.value as HashMap<String, HashMap<String, Any>>
-                    for (value in map.values) {
-                        runeList.add(RuneFactory.createFromHashMap(value))
+                    runeList = arrayListOf<Rune>().apply {
+                        map.values.forEach {
+                            add(RuneFactory.createFromHashMap(it))
+                        }
                     }
-
                 }
 
                 override fun onCancelled(error: DatabaseError) {

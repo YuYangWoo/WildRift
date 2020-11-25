@@ -1,6 +1,7 @@
 package com.cookandroid.wildlift.rune
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cookandroid.wildlift.R
 import com.cookandroid.wildlift.base.BaseActivity
@@ -13,6 +14,19 @@ class RunesActivity : BaseActivity<ActivityRunesSpellBinding>(R.layout.activity_
         init()
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
     private fun init() {
         initActionBar()
         initMainRuneRecyclerView()
@@ -23,6 +37,7 @@ class RunesActivity : BaseActivity<ActivityRunesSpellBinding>(R.layout.activity_
 
     private fun initActionBar() {
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun initMainRuneRecyclerView() {
