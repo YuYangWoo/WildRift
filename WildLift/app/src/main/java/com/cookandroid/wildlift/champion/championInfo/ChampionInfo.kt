@@ -1,13 +1,10 @@
-package com.cookandroid.wildlift.champion
+package com.cookandroid.wildlift.champion.championInfo
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.cookandroid.wildlift.R
-import com.cookandroid.wildlift.champion.championInfo.ChampionSkillSkin
-import com.cookandroid.wildlift.champion.championInfo.ChampionUniverse
 import kotlinx.android.synthetic.main.activity_champion_info.*
 
 class ChampionInfo : AppCompatActivity() {

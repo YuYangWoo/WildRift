@@ -33,12 +33,14 @@ class ChampionListFragment(val tabTitle: Int) : Fragment() {
 
         var recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         var searchView = view.findViewById<EditText>(R.id.search_bar)
+
         // LinearLayoutManager 객체 생성 후 layoutManager에 대입 및 recyclerView 고정크기 On
         recyclerView.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = layoutManager
 
         list.clear()
+        // 리사이클러뷰 어뎁터에 tabTitle에 따른 값 적용
         recyclerViewAdapter = when (tabTitle) {
             R.string.champion_list_All -> {
                 ChampionAdapter(championList.championList)

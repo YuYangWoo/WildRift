@@ -27,6 +27,7 @@ class ChampionSkillSkin : AppCompatActivity() {
         // ActionBar Home 버튼 Enable
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        // 웹 뷰 적용
         webView.apply {
             webViewClient = WebViewClient()
             settings.javaScriptEnabled = true

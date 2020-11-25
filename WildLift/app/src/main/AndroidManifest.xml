@@ -26,7 +26,7 @@
           android:windowSoftInputMode="adjustNothing"></activity>
         <activity android:name=".item.ItemActivity"></activity>
         <activity android:name=".rune.RunesActivity"></activity>
-        <activity android:name=".champion.ChampionInfo"></activity>
+        <activity android:name=".champion.championInfo.ChampionInfo"></activity>
         <activity android:name=".spell.SpellActivity"></activity>
         <activity android:name=".champion.championInfo.ChampionSkillSkin"></activity>
         <activity android:name=".champion.championInfo.ChampionUniverse"></activity>
