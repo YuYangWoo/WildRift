@@ -68,7 +68,7 @@
             android:layout_marginTop="12dp"
             android:text="추천 빌드"
             android:textColor="#000000"
-            android:textSize="16dp"
+            android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
-            android:layout_marginTop="34dp"
+            android:layout_marginTop="8dp"
             android:text="아이템"
             android:textColor="#000000"
             android:textSize="18dp"
@@ -103,7 +103,7 @@
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="18dp"
             android:layout_marginTop="60dp"
             android:text="스펠"
             android:textColor="#000000"
@@ -133,11 +133,11 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="60dp"
             android:text="능력치/스킬"
-            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintEnd_toStartOf="@+id/btnSkillSkin"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnSkillSkin"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -147,7 +147,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnUniverse"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
@@ -164,7 +164,7 @@
             android:layout_marginEnd="50dp"
             android:text="미구현"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintTop_toBottomOf="@+id/btnSkillSkin" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

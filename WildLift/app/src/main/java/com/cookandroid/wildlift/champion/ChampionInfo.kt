@@ -23,5 +23,11 @@ class ChampionInfo : AppCompatActivity() {
             .into(imgChampImage) // list_log의 imageView에 띄우기
         txtChampName.text = champName
         txtChampPosition.text = champPosition
+
+        // 스킬/스킨 버튼
+        btnSkillSkin.setOnClickListener {
+
+        }
+        // 챔피언 유니버스 버튼
     }
 }
