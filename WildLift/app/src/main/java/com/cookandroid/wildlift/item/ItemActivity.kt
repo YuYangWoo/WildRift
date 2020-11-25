@@ -34,6 +34,12 @@ class ItemActivity : BaseActivity<ActivityItemBinding>(R.layout.activity_item) {
                 ItemSearchDialog(this).show()
                 true
             }
+
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
             else -> {
                 super.onOptionsItemSelected(item)
             }
@@ -47,6 +53,7 @@ class ItemActivity : BaseActivity<ActivityItemBinding>(R.layout.activity_item) {
 
     private fun initActionBar() {
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun initViewPager() {
