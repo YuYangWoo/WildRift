@@ -1,6 +1,9 @@
 package com.cookandroid.wildlift.singleton
 
 import android.util.Log
+import com.cookandroid.wildlift.champion.ChampionFactory
+import com.cookandroid.wildlift.champion.ChampionItem
+import com.cookandroid.wildlift.champion.championInfo.ChampionInformation
 import com.cookandroid.wildlift.item.Item
 import com.cookandroid.wildlift.item.ItemFactory
 import com.cookandroid.wildlift.rune.Rune
@@ -9,13 +12,20 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
+import org.json.JSONArray
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 object FirebaseSingleton {
+    private var database = FirebaseDatabase.getInstance()
     var itemList = ArrayList<Item>()
     var runeList = ArrayList<Rune>()
+    var championInformationList = ArrayList<ChampionInformation>()
 
     fun init() {
-        FirebaseDatabase.getInstance()
+        database
             .getReference("ItemList")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -32,16 +42,34 @@ object FirebaseSingleton {
                 }
             })
 
-        FirebaseDatabase.getInstance()
+        database
             .getReference("runeList")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val map = snapshot.value as HashMap<String, HashMap<String, Any>>
-                    runeList = arrayListOf<Rune>().apply {
-                        map.values.forEach {
-                            add(RuneFactory.createFromHashMap(it))
-                        }
+                    val list = ArrayList<Rune>()
+                    for (data in snapshot.children) {
+                        data.getValue(Rune::class.java)?.let { list.add(it) }
                     }
+
+                    runeList = list
+                }
+
+                // 디비를 가져오던중 에러 발생 시 에러문 출력
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Log.e("Error", databaseError.toException().toString())
+                }
+            })
+
+        FirebaseDatabase.getInstance()
+            .getReference("championInfo")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val list = ArrayList<ChampionInformation>()
+                    for (data in snapshot.children) {
+                        data.getValue(ChampionInformation::class.java)?.let { list.add(it) }
+                    }
+
+                    championInformationList = list
                 }
 
                 override fun onCancelled(error: DatabaseError) {

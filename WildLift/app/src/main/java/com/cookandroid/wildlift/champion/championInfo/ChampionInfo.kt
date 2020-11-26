@@ -2,12 +2,16 @@ package com.cookandroid.wildlift.champion.championInfo
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.cookandroid.wildlift.R
+import com.cookandroid.wildlift.singleton.FirebaseSingleton
 import kotlinx.android.synthetic.main.activity_champion_info.*
 
 class ChampionInfo : AppCompatActivity() {
+    private lateinit var championInformation: ChampionInformation
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_champion_info)
@@ -19,6 +23,16 @@ class ChampionInfo : AppCompatActivity() {
         var champName = intent.getStringExtra("championName")
         var champPosition = intent.getStringExtra("championPosition")
         var champEngName = intent.getStringExtra("championEngName")
+        championInformation = run {
+            for (information in FirebaseSingleton.championInformationList) {
+                if (information.name == champName) {
+                    return@run information
+                }
+            }
+
+            return@run ChampionInformation()
+        }
+        Log.d("PASS", championInformation.toString())
 
         Glide.with(this) // 띄어줄 뷰를 명시
             .load(champImg) // 이미지 주소

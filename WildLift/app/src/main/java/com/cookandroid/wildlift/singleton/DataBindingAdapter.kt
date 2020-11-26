@@ -23,7 +23,7 @@ object DataBindingAdapter {
     @BindingAdapter("itemImage")
     fun setRuneImage(view: ImageView, rune: Rune) {
         Glide.with(view.context)
-            .load(rune.imageURL)
+            .load(rune.image)
             .error(R.drawable.ic_menu_send)
             .into(view)
     }
