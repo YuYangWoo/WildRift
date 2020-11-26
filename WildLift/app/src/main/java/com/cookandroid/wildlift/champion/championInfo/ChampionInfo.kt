@@ -32,7 +32,7 @@ class ChampionInfo : AppCompatActivity() {
 
             return@run ChampionInformation()
         }
-        Log.d("PASS", championInformation.toString())
+        Log.d("PASS", championInformation.skill[1].toString())
 
         Glide.with(this) // 띄어줄 뷰를 명시
             .load(champImg) // 이미지 주소
