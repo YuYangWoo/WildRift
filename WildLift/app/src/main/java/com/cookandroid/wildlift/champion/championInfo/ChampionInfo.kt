@@ -4,14 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cookandroid.wildlift.R
+import com.cookandroid.wildlift.item.ItemAdapter
 import com.cookandroid.wildlift.singleton.FirebaseSingleton
 import kotlinx.android.synthetic.main.activity_champion_info.*
 
 class ChampionInfo : AppCompatActivity() {
     private lateinit var championInformation: ChampionInformation
-
+    private var recyclerItemAdapter = com.cookandroid.wildlift.champion.championInfo.ItemAdapter()
+    private lateinit var layoutManager: RecyclerView.LayoutManager
+    private var itemUrl = ArrayList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_champion_info)
@@ -33,6 +38,21 @@ class ChampionInfo : AppCompatActivity() {
             return@run ChampionInformation()
         }
         Log.d("PASS", championInformation.skill[1].toString())
+
+        // 추천 아이템 리스트
+        recyclerItem.setHasFixedSize(true)
+        layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
+        recyclerItem.layoutManager = layoutManager
+                for(i in FirebaseSingleton.itemList) {
+            for(j in championInformation.item) {
+                if(i.name == j.name) {
+          itemUrl.add(i.imageURL)
+                }
+            }
+        }
+        recyclerItemAdapter = ItemAdapter(itemUrl)
+        recyclerItem.adapter = recyclerItemAdapter
+
 
         Glide.with(this) // 띄어줄 뷰를 명시
             .load(champImg) // 이미지 주소
