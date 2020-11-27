@@ -30,6 +30,7 @@
         <activity android:name=".spell.SpellActivity"></activity>
         <activity android:name=".champion.championInfo.ChampionSkillSkin"></activity>
         <activity android:name=".champion.championInfo.ChampionUniverse"></activity>
+        <activity android:name=".champion.championInfo.ChampionAbility"/>
     </application>
 
 </manifest>

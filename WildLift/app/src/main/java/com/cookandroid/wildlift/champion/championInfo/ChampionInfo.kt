@@ -43,7 +43,6 @@ class ChampionInfo : AppCompatActivity() {
 
             return@run ChampionInformation()
         }
-        Log.d("PASS", championInformation.skill[1].toString())
 
         // 추천 아이템 리스트
         recyclerItem.setHasFixedSize(true)
@@ -87,6 +86,7 @@ class ChampionInfo : AppCompatActivity() {
         recyclerSpellAdapter = ItemAdapter(spellUrl)
         recyclerSpell.adapter = recyclerSpellAdapter
 
+        // 챔피언 이미지
         Glide.with(this) // 띄어줄 뷰를 명시
             .load(champImg) // 이미지 주소
             .into(imgChampImage) // list_log의 imageView에 띄우기
@@ -99,9 +99,17 @@ class ChampionInfo : AppCompatActivity() {
             intent.putExtra("championEngName", champEngName)
             startActivity(intent)
         }
+
         // 챔피언 유니버스 버튼
         btnUniverse.setOnClickListener {
             var intent = Intent(this, ChampionUniverse::class.java)
+            intent.putExtra("championEngName", champEngName)
+            startActivity(intent)
+        }
+
+        // 능력치/스킬 버튼
+        btnAbility.setOnClickListener {
+            var intent = Intent(this, ChampionAbility::class.java)
             intent.putExtra("championEngName", champEngName)
             startActivity(intent)
         }

@@ -1,0 +1,190 @@
+Index: app/src/main/java/com/cookandroid/wildlift/champion/championInfo/ChampionInformation.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cookandroid.wildlift.champion.championInfo\r\n\r\ndata class ChampionInformation(\r\n    var name: String,\r\n    var attack: String,\r\n    var spellPower: String,\r\n    var hp: String,\r\n    var mp: String,\r\n    var armor: String,\r\n    var magicResistance: String,\r\n    var attackSpeed: String,\r\n    var coolTime: String,\r\n    var criticalChance: String,\r\n    var criticalDamage: String,\r\n    var rune: List<RuneName>,\r\n    var skill: List<Skill>,\r\n    var spell: List<SpellName>,\r\n    var item: List<ItemName>\r\n\r\n) {\r\n    constructor() : this(\"\", \"\", \"\", \"\", \"\", \"\", \"\" ,\"\", \"\", \"\", \"\", listOf(), listOf(), listOf(), listOf())\r\n\r\n    data class Skill(\r\n        var image: String,\r\n        var name: String,\r\n        var coolTime: String,\r\n        var description: String\r\n    ) {\r\n        constructor() : this(\"\", \"\", \"\", \"\")\r\n    }\r\n\r\n    data class SpellName(\r\n        var name: String\r\n    ) {\r\n        constructor() : this(\"\")\r\n    }\r\n\r\n    data class ItemName(\r\n        var name: String\r\n    ) {\r\n        constructor() : this(\"\")\r\n    }\r\n\r\n    data class RuneName(\r\n        var name: String\r\n    ) {\r\n        constructor() : this(\"\")\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cookandroid/wildlift/champion/championInfo/ChampionInformation.kt	(revision 9f9666be691372a5f0d23b74e30ce6a0e0b128d7)
++++ app/src/main/java/com/cookandroid/wildlift/champion/championInfo/ChampionInformation.kt	(date 1606477653119)
+@@ -1,5 +1,8 @@
+ package com.cookandroid.wildlift.champion.championInfo
+ 
++import android.os.Parcel
++import android.os.Parcelable
++
+ data class ChampionInformation(
+     var name: String,
+     var attack: String,
+@@ -17,7 +20,26 @@
+     var spell: List<SpellName>,
+     var item: List<ItemName>
+ 
+-) {
++) : Parcelable{
++    constructor(parcel: Parcel) : this(
++        parcel.readString(),
++        parcel.readString(),
++        parcel.readString(),
++        parcel.readString(),
++        parcel.readString(),
++        parcel.readString(),
++        parcel.readString(),
++        parcel.readString(),
++        parcel.readString(),
++        parcel.readString(),
++        parcel.readString(),
++        TODO("rune"),
++        TODO("skill"),
++        TODO("spell"),
++        TODO("item")
++    ) {
++    }
++
+     constructor() : this("", "", "", "", "", "", "" ,"", "", "", "", listOf(), listOf(), listOf(), listOf())
+ 
+     data class Skill(
+@@ -46,4 +68,32 @@
+     ) {
+         constructor() : this("")
+     }
++
++    override fun writeToParcel(parcel: Parcel, flags: Int) {
++        parcel.writeString(name)
++        parcel.writeString(attack)
++        parcel.writeString(spellPower)
++        parcel.writeString(hp)
++        parcel.writeString(mp)
++        parcel.writeString(armor)
++        parcel.writeString(magicResistance)
++        parcel.writeString(attackSpeed)
++        parcel.writeString(coolTime)
++        parcel.writeString(criticalChance)
++        parcel.writeString(criticalDamage)
++    }
++
++    override fun describeContents(): Int {
++        return 0
++    }
++
++    companion object CREATOR : Parcelable.Creator<ChampionInformation> {
++        override fun createFromParcel(parcel: Parcel): ChampionInformation {
++            return ChampionInformation(parcel)
++        }
++
++        override fun newArray(size: Int): Array<ChampionInformation?> {
++            return arrayOfNulls(size)
++        }
++    }
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/cookandroid/wildlift/champion/championInfo/ChampionInfo.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cookandroid.wildlift.champion.championInfo\r\n\r\nimport android.content.Intent\r\nimport android.os.Bundle\r\nimport android.util.Log\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport androidx.recyclerview.widget.LinearLayoutManager\r\nimport androidx.recyclerview.widget.RecyclerView\r\nimport com.bumptech.glide.Glide\r\nimport com.cookandroid.wildlift.R\r\nimport com.cookandroid.wildlift.singleton.FirebaseSingleton\r\nimport com.cookandroid.wildlift.spell.SpellFactory\r\nimport kotlinx.android.synthetic.main.activity_champion_info.*\r\n\r\nclass ChampionInfo : AppCompatActivity() {\r\n    private lateinit var championInformation: ChampionInformation\r\n    private var recyclerItemAdapter = com.cookandroid.wildlift.champion.championInfo.ItemAdapter()\r\n    private var recyclerRuneAdapter = com.cookandroid.wildlift.champion.championInfo.ItemAdapter()\r\n    private var recyclerSpellAdapter = com.cookandroid.wildlift.champion.championInfo.ItemAdapter()\r\n    private lateinit var layoutManagerItem: RecyclerView.LayoutManager\r\n    private lateinit var layoutManagerRune: RecyclerView.LayoutManager\r\n    private lateinit var layoutManagerSpell: RecyclerView.LayoutManager\r\n    private var itemUrl = ArrayList<String>()\r\n    private var runeUrl = ArrayList<String>()\r\n    private var spellUrl = ArrayList<String>()\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_champion_info)\r\n\r\n        // ActionBar Title 변경\r\n        title = resources.getString(R.string.champion_info_title)\r\n\r\n        var champImg = intent.getStringExtra(\"championImage\")\r\n        var champName = intent.getStringExtra(\"championName\")\r\n        var champPosition = intent.getStringExtra(\"championPosition\")\r\n        var champEngName = intent.getStringExtra(\"championEngName\")\r\n        championInformation = run {\r\n            for (information in FirebaseSingleton.championInformationList) {\r\n                if (information.name == champName) {\r\n                    return@run information\r\n                }\r\n            }\r\n\r\n            return@run ChampionInformation()\r\n        }\r\n        Log.d(\"PASS\", championInformation.skill[1].toString())\r\n\r\n        // 추천 아이템 리스트\r\n        recyclerItem.setHasFixedSize(true)\r\n        layoutManagerItem = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)\r\n        recyclerItem.layoutManager = layoutManagerItem\r\n        for (i in FirebaseSingleton.itemList) {\r\n            for (j in championInformation.item) {\r\n                if (i.name == j.name) {\r\n                    itemUrl.add(i.imageURL)\r\n                }\r\n            }\r\n        }\r\n        recyclerItemAdapter = ItemAdapter(itemUrl)\r\n        recyclerItem.adapter = recyclerItemAdapter\r\n\r\n        // 추천 룬 리스트\r\n        recyclerRune.setHasFixedSize(true)\r\n        layoutManagerRune = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)\r\n        recyclerRune.layoutManager = layoutManagerRune\r\n        for (i in FirebaseSingleton.runeList) {\r\n            for (j in championInformation.rune) {\r\n                if (i.name == j.name) {\r\n                   runeUrl.add(i.image)\r\n                }\r\n            }\r\n        }\r\n        recyclerRuneAdapter = ItemAdapter(runeUrl)\r\n        recyclerRune.adapter = recyclerRuneAdapter\r\n\r\n        // 추천 스펠 리스트\r\n        recyclerSpell.setHasFixedSize(true)\r\n        layoutManagerSpell = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)\r\n        recyclerSpell.layoutManager = layoutManagerSpell\r\n        for (i in SpellFactory.spellList) {\r\n            for (j in championInformation.spell) {\r\n                if (i.name == j.name) {\r\n                    spellUrl.add(i.image!!)\r\n                }\r\n            }\r\n        }\r\n        recyclerSpellAdapter = ItemAdapter(spellUrl)\r\n        recyclerSpell.adapter = recyclerSpellAdapter\r\n\r\n        Glide.with(this) // 띄어줄 뷰를 명시\r\n            .load(champImg) // 이미지 주소\r\n            .into(imgChampImage) // list_log의 imageView에 띄우기\r\n        txtChampName.text = champName\r\n        txtChampPosition.text = champPosition\r\n\r\n        // 스킬/스킨 버튼\r\n        btnSkillSkin.setOnClickListener {\r\n            var intent = Intent(this, ChampionSkillSkin::class.java)\r\n            intent.putExtra(\"championEngName\", champEngName)\r\n            startActivity(intent)\r\n        }\r\n        // 챔피언 유니버스 버튼\r\n        btnUniverse.setOnClickListener {\r\n            var intent = Intent(this, ChampionUniverse::class.java)\r\n            intent.putExtra(\"championEngName\", champEngName)\r\n            startActivity(intent)\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cookandroid/wildlift/champion/championInfo/ChampionInfo.kt	(revision 9f9666be691372a5f0d23b74e30ce6a0e0b128d7)
++++ app/src/main/java/com/cookandroid/wildlift/champion/championInfo/ChampionInfo.kt	(date 1606477464608)
+@@ -43,7 +43,6 @@
+ 
+             return@run ChampionInformation()
+         }
+-        Log.d("PASS", championInformation.skill[1].toString())
+ 
+         // 추천 아이템 리스트
+         recyclerItem.setHasFixedSize(true)
+@@ -87,6 +86,7 @@
+         recyclerSpellAdapter = ItemAdapter(spellUrl)
+         recyclerSpell.adapter = recyclerSpellAdapter
+ 
++        // 챔피언 이미지
+         Glide.with(this) // 띄어줄 뷰를 명시
+             .load(champImg) // 이미지 주소
+             .into(imgChampImage) // list_log의 imageView에 띄우기
+@@ -99,11 +99,18 @@
+             intent.putExtra("championEngName", champEngName)
+             startActivity(intent)
+         }
++
+         // 챔피언 유니버스 버튼
+         btnUniverse.setOnClickListener {
+             var intent = Intent(this, ChampionUniverse::class.java)
+             intent.putExtra("championEngName", champEngName)
+             startActivity(intent)
+         }
++
++        // 능력치/스킬 버튼
++        btnAbility.setOnClickListener {
++            var intent = Intent(this, ChampionAbility::class.java)
++            intent.putExtra()
++        }
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_champion_info.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/cstLyTop\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"0dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHeight_percent=\"0.16\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintWidth_percent=\"1\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/imgChampImage\"\r\n            android:layout_width=\"100dp\"\r\n            android:layout_height=\"100dp\"\r\n            android:layout_marginStart=\"15dp\"\r\n            android:layout_marginTop=\"15dp\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            app:srcCompat=\"@drawable/common_google_signin_btn_icon_light_normal_background\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/txtChampName\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"17dp\"\r\n            android:layout_marginTop=\"27dp\"\r\n            android:text=\"TextView\"\r\n            android:textColor=\"#000000\"\r\n            android:textSize=\"18dp\"\r\n            app:layout_constraintStart_toEndOf=\"@+id/imgChampImage\"\r\n            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/txtChampPosition\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"17dp\"\r\n            android:layout_marginTop=\"36dp\"\r\n\r\n            android:text=\"TextView\"\r\n            app:layout_constraintStart_toEndOf=\"@+id/imgChampImage\"\r\n            app:layout_constraintTop_toBottomOf=\"@+id/txtChampName\" />\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/cstLyMiddle\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"0dp\"\r\n        android:layout_marginTop=\"2dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHeight_percent=\"0.44\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/cstLyTop\"\r\n        app:layout_constraintWidth_percent=\"1\">\r\n\r\n        <TextView\r\n            android:id=\"@+id/txtBuild\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"18dp\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:text=\"추천 빌드\"\r\n            android:textColor=\"#000000\"\r\n            android:textSize=\"20dp\"\r\n            android:textStyle=\"bold\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/txtItem\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"18dp\"\r\n            android:layout_marginTop=\"8dp\"\r\n            android:text=\"아이템\"\r\n            android:textColor=\"#000000\"\r\n            android:textSize=\"18dp\"\r\n            android:textStyle=\"bold\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@+id/txtBuild\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/txtRune\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"18dp\"\r\n            android:layout_marginTop=\"56dp\"\r\n            android:text=\"룬\"\r\n            android:textColor=\"#000000\"\r\n            android:textSize=\"18dp\"\r\n            android:textStyle=\"bold\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@+id/txtItem\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/txtSpell\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"18dp\"\r\n            android:layout_marginTop=\"60dp\"\r\n            android:text=\"스펠\"\r\n            android:textColor=\"#000000\"\r\n            android:textSize=\"18dp\"\r\n            android:textStyle=\"bold\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@+id/txtRune\" />\r\n\r\n        <androidx.recyclerview.widget.RecyclerView\r\n            android:id=\"@+id/recyclerItem\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"0dp\"\r\n            android:layout_marginStart=\"18dp\"\r\n            app:layout_constraintBottom_toTopOf=\"@id/txtRune\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/txtItem\" />\r\n\r\n        <androidx.recyclerview.widget.RecyclerView\r\n            android:id=\"@+id/recyclerRune\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"0dp\"\r\n            android:layout_marginStart=\"18dp\"\r\n            app:layout_constraintBottom_toTopOf=\"@id/txtSpell\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/txtRune\" />\r\n\r\n        <androidx.recyclerview.widget.RecyclerView\r\n            android:id=\"@+id/recyclerSpell\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"0dp\"\r\n            android:layout_marginStart=\"18dp\"\r\n            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/txtSpell\"\r\n            app:layout_constraintVertical_bias=\"0.0\" />\r\n\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/cstLyBottom\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"0dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHeight_percent=\"0.3\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@id/cstLyMiddle\"\r\n        app:layout_constraintWidth_percent=\"1\">\r\n\r\n        <Button\r\n            android:id=\"@+id/button\"\r\n            android:layout_width=\"130dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"24dp\"\r\n            android:layout_marginEnd=\"60dp\"\r\n            android:text=\"능력치/스킬\"\r\n            app:layout_constraintEnd_toStartOf=\"@+id/btnSkillSkin\"\r\n            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n        <Button\r\n            android:id=\"@+id/btnSkillSkin\"\r\n            android:layout_width=\"130dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"24dp\"\r\n            android:layout_marginEnd=\"50dp\"\r\n            android:text=\"스킬/스킨\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n        <Button\r\n            android:id=\"@+id/btnUniverse\"\r\n            android:layout_width=\"130dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"60dp\"\r\n            android:layout_marginEnd=\"60dp\"\r\n            android:text=\"챔피언 유니버스\"\r\n            app:layout_constraintEnd_toStartOf=\"@+id/button4\"\r\n            app:layout_constraintTop_toBottomOf=\"@+id/button\" />\r\n\r\n        <Button\r\n            android:id=\"@+id/button4\"\r\n            android:layout_width=\"130dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"63dp\"\r\n            android:layout_marginEnd=\"50dp\"\r\n            android:text=\"미구현\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@+id/btnSkillSkin\" />\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_champion_info.xml	(revision 9f9666be691372a5f0d23b74e30ce6a0e0b128d7)
++++ app/src/main/res/layout/activity_champion_info.xml	(date 1606471257526)
+@@ -155,7 +155,7 @@
+         app:layout_constraintWidth_percent="1">
+ 
+         <Button
+-            android:id="@+id/button"
++            android:id="@+id/btnAbility"
+             android:layout_width="130dp"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="24dp"
+@@ -182,7 +182,7 @@
+             android:layout_marginEnd="60dp"
+             android:text="챔피언 유니버스"
+             app:layout_constraintEnd_toStartOf="@+id/button4"
+-            app:layout_constraintTop_toBottomOf="@+id/button" />
++            app:layout_constraintTop_toBottomOf="@+id/btnAbility" />
+ 
+         <Button
+             android:id="@+id/button4"
+Index: app/src/main/java/com/cookandroid/wildlift/champion/championInfo/ChampionAbility.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/cookandroid/wildlift/champion/championInfo/ChampionAbility.kt	(date 1606477464643)
++++ app/src/main/java/com/cookandroid/wildlift/champion/championInfo/ChampionAbility.kt	(date 1606477464643)
+@@ -0,0 +1,14 @@
++package com.cookandroid.wildlift.champion.championInfo
++
++import android.os.Bundle
++import androidx.appcompat.app.AppCompatActivity
++import com.cookandroid.wildlift.R
++
++class ChampionAbility :AppCompatActivity() {
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        setContentView(R.layout.activity_champion_ability)
++
++
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_champion_ability.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_champion_ability.xml	(date 1606477331176)
++++ app/src/main/res/layout/activity_champion_ability.xml	(date 1606477331176)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
