@@ -8,7 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.wildlift.champion.ChampionActivity
+import com.cookandroid.wildlift.champion.ChampionAdapter
 import com.cookandroid.wildlift.item.ItemActivity
 import com.cookandroid.wildlift.rune.RunesActivity
 import com.cookandroid.wildlift.singleton.FirebaseSingleton
@@ -16,15 +19,22 @@ import com.cookandroid.wildlift.spell.SpellActivity
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var database: FirebaseDatabase
-    private lateinit var databaseReference: DatabaseReference
+    // 패치 리사이클러뷰
+    private lateinit var layoutManager: RecyclerView.LayoutManager
+    private var recyclerViewAdapter = PatchAdapter()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.content_main)
+
+        // 파이어베이스 정보들 불러오기
         FirebaseSingleton.init()
+
         title = resources.getString(R.string.app_name)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -38,6 +48,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
+
+
+        // 패치 리스트 만들기
+        recyclerPatch.setHasFixedSize(true) // LinearLayoutManager 객체 생성 후 layoutManager에 대입 및 recyclerView 고정크기 On
+        layoutManager = LinearLayoutManager(this)
+        (layoutManager as LinearLayoutManager).reverseLayout = true // 거꾸로 대입
+        (layoutManager as LinearLayoutManager).stackFromEnd = true // 처음부터 끝까지
+        recyclerPatch.layoutManager = layoutManager
+        recyclerPatch.adapter = recyclerViewAdapter
 
         //아이템 선택 이벤트 호출
         navigationView.setNavigationItemSelectedListener(this)

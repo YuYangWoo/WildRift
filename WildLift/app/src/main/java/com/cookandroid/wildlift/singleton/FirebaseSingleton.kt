@@ -1,6 +1,7 @@
 package com.cookandroid.wildlift.singleton
 
 import android.util.Log
+import com.cookandroid.wildlift.PatchItem
 import com.cookandroid.wildlift.champion.ChampionFactory
 import com.cookandroid.wildlift.champion.ChampionItem
 import com.cookandroid.wildlift.champion.championInfo.ChampionInformation
@@ -23,7 +24,7 @@ object FirebaseSingleton {
     var itemList = ArrayList<Item>()
     var runeList = ArrayList<Rune>()
     var championInformationList = ArrayList<ChampionInformation>()
-
+    var patchList = ArrayList<PatchItem>()
     fun init() {
         database
             .getReference("ItemList")
@@ -68,7 +69,6 @@ object FirebaseSingleton {
                     for (data in snapshot.children) {
                         data.getValue(ChampionInformation::class.java)?.let { list.add(it) }
                     }
-
                     championInformationList = list
                 }
 
