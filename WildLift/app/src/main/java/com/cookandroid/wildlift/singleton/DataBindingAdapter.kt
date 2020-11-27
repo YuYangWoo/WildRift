@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.cookandroid.wildlift.R
 import com.cookandroid.wildlift.item.Item
 import com.cookandroid.wildlift.rune.Rune
+import com.cookandroid.wildlift.spell.SpellItem
 
 object DataBindingAdapter {
     @JvmStatic
@@ -24,6 +25,15 @@ object DataBindingAdapter {
     fun setRuneImage(view: ImageView, rune: Rune) {
         Glide.with(view.context)
             .load(rune.image)
+            .error(R.drawable.ic_menu_send)
+            .into(view)
+    }
+
+    @JvmStatic
+    @BindingAdapter("itemImage")
+    fun setRuneImage(view: ImageView, spell: SpellItem) {
+        Glide.with(view.context)
+            .load(spell.image)
             .error(R.drawable.ic_menu_send)
             .into(view)
     }

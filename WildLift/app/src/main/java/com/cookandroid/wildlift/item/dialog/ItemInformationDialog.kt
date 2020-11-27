@@ -13,10 +13,13 @@ import com.cookandroid.wildlift.databinding.DialogItemInformationBinding
 import com.cookandroid.wildlift.item.Item
 import com.cookandroid.wildlift.item.ItemAdapter
 import com.cookandroid.wildlift.singleton.FirebaseSingleton
+import kotlin.properties.Delegates
 
 class ItemInformationDialog(context: Context, val item: Item) : BaseDialog<DialogItemInformationBinding>(context, R.layout.dialog_item_information) {
     companion object {
-        var instance: ItemInformationDialog? = null
+        var instance by Delegates.observable<ItemInformationDialog?>(null) { _, oldValue, _ ->
+            oldValue?.cancel()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,7 +68,6 @@ class ItemInformationDialog(context: Context, val item: Item) : BaseDialog<Dialo
             }
         }
 
-        instance?.cancel()
         instance = this
     }
 }
