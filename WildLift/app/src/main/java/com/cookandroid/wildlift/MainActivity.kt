@@ -48,7 +48,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
-
+        // 버튼 클릭 이벤트
+        goActivity()
 
         // 패치 리스트 만들기
         recyclerPatch.setHasFixedSize(true) // LinearLayoutManager 객체 생성 후 layoutManager에 대입 및 recyclerView 고정크기 On
@@ -84,4 +85,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
+    private fun goActivity() {
+        btnChamp.setOnClickListener { startActivity(Intent(this, ChampionActivity::class.java)) }
+        btnItem.setOnClickListener { startActivity(Intent(this, ItemActivity::class.java)) }
+        btnSpell.setOnClickListener {  startActivity(Intent(this, SpellActivity::class.java))}
+        btnRune.setOnClickListener {  startActivity(Intent(this, RunesActivity::class.java))}
+    }
 }
