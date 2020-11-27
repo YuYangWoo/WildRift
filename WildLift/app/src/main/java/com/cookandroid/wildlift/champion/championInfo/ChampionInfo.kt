@@ -20,9 +20,9 @@ class ChampionInfo : AppCompatActivity() {
     private lateinit var layoutManagerItem: RecyclerView.LayoutManager
     private lateinit var layoutManagerRune: RecyclerView.LayoutManager
     private lateinit var layoutManagerSpell: RecyclerView.LayoutManager
-    private var itemUrl = ArrayList<String>()
-    private var runeUrl = ArrayList<String>()
-    private var spellUrl = ArrayList<String>()
+    private var itemUrl = ArrayList<ItemAdapter.ItemType>()
+    private var runeUrl = ArrayList<ItemAdapter.ItemType>()
+    private var spellUrl = ArrayList<ItemAdapter.ItemType>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_champion_info)
@@ -52,7 +52,7 @@ class ChampionInfo : AppCompatActivity() {
         for (i in FirebaseSingleton.itemList) {
             for (j in championInformation.item) {
                 if (i.name == j.name) {
-                    itemUrl.add(i.imageURL)
+                    itemUrl.add(ItemAdapter.ItemType(ItemAdapter.ItemType.ITEM, i.imageURL))
                 }
             }
         }
@@ -66,7 +66,7 @@ class ChampionInfo : AppCompatActivity() {
         for (i in FirebaseSingleton.runeList) {
             for (j in championInformation.rune) {
                 if (i.name == j.name) {
-                   runeUrl.add(i.image)
+                    runeUrl.add(ItemAdapter.ItemType(ItemAdapter.ItemType.RUNE, i.image))
                 }
             }
         }
@@ -80,7 +80,7 @@ class ChampionInfo : AppCompatActivity() {
         for (i in SpellFactory.spellList) {
             for (j in championInformation.spell) {
                 if (i.name == j.name) {
-                    spellUrl.add(i.image!!)
+                    spellUrl.add(ItemAdapter.ItemType(ItemAdapter.ItemType.SPELL, i.image!!))
                 }
             }
         }

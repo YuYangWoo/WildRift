@@ -5,7 +5,7 @@
     <data>
         <variable
             name="dialog"
-            type="com.cookandroid.wildlift.rune.RuneDialog" />
+            type="com.cookandroid.wildlift.spell.SpellDialog" />
     </data>
 
     <ScrollView
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                itemImage="@{dialog.item}"
+                itemImage="@{dialog.spell}"
 
                 android:layout_width="150dp"
                 android:layout_height="150dp"
@@ -29,20 +29,15 @@
 
             <TextView
                 style="@style/ItemName"
-                android:text="@{dialog.item.name}" />
+                android:text="@{dialog.spell.name}" />
 
             <TextView
-                android:text="@{dialog.item.subtitle}"
-
-                android:textColor="#FFB300"
-                android:textSize="18sp"
-                android:textAlignment="center"
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                style="@style/ItemCost"
+                android:text="@{dialog.spell.cool}"
+                app:drawableRightCompat="@null" />
 
             <TextView
-                android:text="@{dialog.item.topic}"
+                android:text="@{dialog.spell.topic}"
 
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
