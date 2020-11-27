@@ -76,7 +76,7 @@ class ChampionInfo : AppCompatActivity() {
         // 추천 스펠 리스트
         recyclerSpell.setHasFixedSize(true)
         layoutManagerSpell = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        recyclerRune.layoutManager = layoutManagerSpell
+        recyclerSpell.layoutManager = layoutManagerSpell
         for (i in SpellFactory.spellList) {
             for (j in championInformation.spell) {
                 if (i.name == j.name) {
