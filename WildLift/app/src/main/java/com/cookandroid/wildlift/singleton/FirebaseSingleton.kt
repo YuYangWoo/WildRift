@@ -24,7 +24,6 @@ object FirebaseSingleton {
     var itemList = ArrayList<Item>()
     var runeList = ArrayList<Rune>()
     var championInformationList = ArrayList<ChampionInformation>()
-    var patchList = ArrayList<PatchItem>()
     fun init() {
         database
             .getReference("ItemList")
