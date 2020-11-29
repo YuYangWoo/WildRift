@@ -38,6 +38,7 @@ class RunesActivity : BaseActivity<ActivityRunesSpellBinding>(R.layout.activity_
     private fun initActionBar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        title = "아이템 정보"
     }
 
     private fun initMainRuneRecyclerView() {

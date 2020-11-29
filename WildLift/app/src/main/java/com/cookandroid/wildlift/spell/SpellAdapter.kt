@@ -1,24 +1,21 @@
 package com.cookandroid.wildlift.spell
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cookandroid.wildlift.R
 import com.cookandroid.wildlift.SplashActivity
-import com.cookandroid.wildlift.champion.ChampionAdapter
 
 class SpellAdapter constructor() : RecyclerView.Adapter<SpellAdapter.CustomViewHolder>() {
     var splash = SplashActivity()
     var spell = splash.spellList
     // 데이터
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpellAdapter.CustomViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.spell_list, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.list_spell, parent, false)
         return CustomViewHolder(view)
     }
     // 데이터 대입

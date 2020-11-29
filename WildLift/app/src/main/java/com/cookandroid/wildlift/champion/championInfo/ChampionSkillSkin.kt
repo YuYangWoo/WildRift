@@ -16,7 +16,7 @@ class ChampionSkillSkin : AppCompatActivity() {
         setContentView(R.layout.activity_skill_skin)
 
         // ActionBar Title 변경
-        title = "챔피언 유니버스"
+        title = "챔피언 스킨/스킬 정보"
 
         // 툴바 만들기
         val toolbar = findViewById<Toolbar>(R.id.toolbar2)

@@ -54,6 +54,7 @@ class ItemActivity : BaseActivity<ActivityItemBinding>(R.layout.activity_item) {
     private fun initActionBar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        title = "아이템 정보"
     }
 
     private fun initViewPager() {

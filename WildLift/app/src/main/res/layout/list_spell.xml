@@ -8,8 +8,7 @@
     android:layout_marginStart="4dp"
     android:layout_marginTop="2dp"
     android:layout_marginEnd="7dp"
-    android:layout_marginBottom="2dp"
-    android:background="?attr/selectableItemBackground">
+    android:layout_marginBottom="2dp">
 
     <ImageView
         android:id="@+id/imgSpell"
@@ -26,9 +25,10 @@
         android:id="@+id/txtSpellName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="7dp"
         android:layout_marginTop="5dp"
-        android:textColor="#000000"
+        android:textColor="@color/subTitle"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgSpell" />
 
@@ -53,6 +53,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgSpell"
         app:layout_constraintTop_toBottomOf="@id/txtTopic" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.95" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
