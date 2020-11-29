@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -11,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.wildlift.R
+import com.cookandroid.wildlift.RecyclerViewDecoration
 import com.cookandroid.wildlift.base.BaseActivity
 import com.cookandroid.wildlift.base.BaseHolder
 import com.cookandroid.wildlift.champion.ChampionFactory
@@ -26,6 +28,19 @@ class ChampionAbility : BaseActivity<ActivityChampionAbilityBinding>(R.layout.ac
         init()
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
     private fun init() {
         initActionBar()
         initChampionInformation()
@@ -35,6 +50,8 @@ class ChampionAbility : BaseActivity<ActivityChampionAbilityBinding>(R.layout.ac
 
     private fun initActionBar() {
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "챔피언 정보"
     }
 
     private fun initChampionInformation() {
@@ -45,19 +62,14 @@ class ChampionAbility : BaseActivity<ActivityChampionAbilityBinding>(R.layout.ac
         ChampionFactory.championList.forEach {
             if (it.name == information.name) {
                 binding.image = it.image
-                Log.d("PASS", information.toString())
             }
         }
     }
 
     private fun initRecyclerView() {
-        Log.d("PASS", "Hi")
-
         with(binding.recyclerView) {
-            layoutManager = object : LinearLayoutManager(this@ChampionAbility) {
-
-            }
-
+            layoutManager = LinearLayoutManager(this@ChampionAbility)
+            addItemDecoration(RecyclerViewDecoration())
             adapter = SkillAdapter().apply {
                 list = information.skill
             }
