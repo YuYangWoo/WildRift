@@ -7,13 +7,21 @@ import android.util.Log
 import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView
 
-class MyRecyclerView : RecyclerView {
+class FullRecyclerView : RecyclerView {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     private val Int.dp: Int
         get() = (this * Resources.getSystem().displayMetrics.density + 0.5f).toInt()
+
+    override fun canScrollHorizontally(direction: Int): Boolean {
+        return false
+    }
+
+    override fun canScrollVertically(direction: Int): Boolean {
+        return false
+    }
 
     override fun onMeasure(widthSpec: Int, heightSpec: Int) {
         var height = 0
