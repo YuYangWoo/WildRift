@@ -47,7 +47,8 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="BaseToolbar">
-        <item name="android:background">@color/colorPrimary</item>
+
+        <item name="android:background">#08071C</item>
         <item name="titleTextColor">#FFFFFF</item>
     </style>
 
