@@ -16,14 +16,13 @@
         app:layout_constraintHeight_percent="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="1">
+        app:layout_constraintWidth_percent="0.95">
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="@font/scdream4"
             android:text="왈백 패치노트"
             android:textColor="#000000"
@@ -39,16 +38,14 @@
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.15"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cstLyMainTop2"
-        app:layout_constraintWidth_percent="1">
+        app:layout_constraintWidth_percent="0.95">
 
         <TextView
             android:id="@+id/txtPatch"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="7dp"
             android:layout_marginTop="7dp"
             android:text="패치노트"
             android:textColor="#000000"
@@ -147,19 +144,19 @@
         android:id="@+id/cstLyMainMiddle2"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/edge_ellipse"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.2"
-        android:background="@drawable/edge_ellipse"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cstLyMainMiddle">
+        app:layout_constraintTop_toBottomOf="@id/cstLyMainMiddle"
+        app:layout_constraintWidth_percent="0.95">
 
         <TextView
             android:id="@+id/txtLotation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="4dp"
             android:text="챔피언 로테이션"
             android:textColor="#000000"
             android:textSize="16dp"
@@ -171,7 +168,7 @@
             android:id="@+id/recyclerLotation"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -187,13 +184,12 @@
         app:layout_constraintHeight_percent="0.35"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cstLyMainMiddle2"
-        app:layout_constraintWidth_percent="1">
+        app:layout_constraintWidth_percent="0.95">
 
         <TextView
             android:id="@+id/txtTip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
             android:layout_marginTop="7dp"
             android:text="도움 되는 영상"
             android:textColor="#000000"
@@ -206,8 +202,7 @@
             android:id="@+id/recyclerVideo"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
