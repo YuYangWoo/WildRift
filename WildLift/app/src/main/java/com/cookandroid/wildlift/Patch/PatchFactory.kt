@@ -1,4 +1,4 @@
-package com.cookandroid.wildlift
+package com.cookandroid.wildlift.Patch
 
 import android.util.Log
 import com.google.firebase.database.*
@@ -6,13 +6,13 @@ import com.google.firebase.database.*
 object PatchFactory {
     var patchList = ArrayList<PatchItem>()
     private var database: FirebaseDatabase = FirebaseDatabase.getInstance()
-    private lateinit var dbPatch: DatabaseReference
+    private lateinit var dbVideo: DatabaseReference
     init {
         // DB 테이블 연결
-        dbPatch = database.getReference("patchList")
+        dbVideo = database.getReference("patchList")
 
         // logList에 DB데이터 연결
-        dbPatch.addListenerForSingleValueEvent(object : ValueEventListener {
+        dbVideo.addListenerForSingleValueEvent(object : ValueEventListener {
 
             // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
             override fun onDataChange(dataSnapshot: DataSnapshot) {

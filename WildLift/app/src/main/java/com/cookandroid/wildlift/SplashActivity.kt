@@ -1,26 +1,22 @@
 package com.cookandroid.wildlift
 
 import android.app.Activity
-import android.app.Instrumentation
 import android.content.Intent
-import android.content.IntentSender
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.cookandroid.wildlift.Lotation.LotationFactory
+import com.cookandroid.wildlift.Patch.PatchFactory
+import com.cookandroid.wildlift.Video.VideoFactory
 import com.cookandroid.wildlift.champion.ChampionFactory
 import com.cookandroid.wildlift.spell.SpellFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.InstallState
 import com.google.android.play.core.install.InstallStateUpdatedListener
-import com.google.android.play.core.install.model.ActivityResult
 import com.google.android.play.core.install.model.ActivityResult.RESULT_IN_APP_UPDATE_FAILED
-import com.google.android.play.core.install.model.AppUpdateType
-import com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE
 import com.google.android.play.core.install.model.InstallStatus
-import com.google.android.play.core.install.model.UpdateAvailability
 
 class SplashActivity : AppCompatActivity(), InstallStateUpdatedListener {
 
@@ -30,6 +26,7 @@ class SplashActivity : AppCompatActivity(), InstallStateUpdatedListener {
     private val MY_REQUEST_CODE = 100
     private val splashTime:Long = 2000
 
+    var videoList = VideoFactory.videoList
     var championList = ChampionFactory.championList
     var spellList = SpellFactory.spellList
     var patchList = PatchFactory.patchList

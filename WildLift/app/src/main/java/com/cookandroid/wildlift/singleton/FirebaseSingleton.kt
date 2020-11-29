@@ -1,21 +1,14 @@
 package com.cookandroid.wildlift.singleton
 
 import android.util.Log
-import com.cookandroid.wildlift.PatchItem
-import com.cookandroid.wildlift.champion.ChampionFactory
-import com.cookandroid.wildlift.champion.ChampionItem
 import com.cookandroid.wildlift.champion.championInfo.ChampionInformation
 import com.cookandroid.wildlift.item.Item
 import com.cookandroid.wildlift.item.ItemFactory
 import com.cookandroid.wildlift.rune.Rune
-import com.cookandroid.wildlift.rune.RuneFactory
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.ktx.Firebase
-import org.json.JSONArray
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 

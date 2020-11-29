@@ -1,12 +1,11 @@
-package com.cookandroid.wildlift
+package com.cookandroid.wildlift.Patch
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.cookandroid.wildlift.R
 import kotlinx.android.synthetic.main.activity_skill_skin.*
 
 class PatchWebView : AppCompatActivity() {
