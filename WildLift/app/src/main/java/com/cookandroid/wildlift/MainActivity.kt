@@ -27,11 +27,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     // 패치 리사이클러뷰
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var layoutManagerLotation:RecyclerView.LayoutManager
+    private lateinit var layoutManagerVideo:RecyclerView.LayoutManager
+
     private var recyclerViewPatchAdapter = PatchAdapter()
     private var recyclerViewLotationAdapter = LotationAdapter()
+    private var recyclerViewVideoAdapter = VideoAdapter()
+
     private var splash = SplashActivity()
     private var lotationList = ArrayList<String>()
-    private var videoId = "1aqjQFSUjiE"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.content_main)
@@ -61,6 +64,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // 로테이션 만들기
         setLotation()
 
+        // 비디오 만들기
+        setVideo()
         // 아이템 선택 이벤트 호출
         navigationView.setNavigationItemSelectedListener(this)
 
@@ -97,6 +102,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         recyclerViewLotationAdapter = LotationAdapter(lotationList)
         recyclerLotation.adapter = recyclerViewLotationAdapter
+    }
+
+    private fun setVideo() {
+        recyclerVideo.setHasFixedSize(true)
+        layoutManagerVideo = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerVideo.layoutManager = layoutManagerVideo
+        recyclerVideo.adapter = recyclerViewVideoAdapter
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
