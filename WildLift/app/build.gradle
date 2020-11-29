@@ -43,6 +43,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:19.2.0'
     implementation 'com.google.firebase:firebase-auth:20.0.1'
     implementation 'com.google.android.play:core-ktx:1.8.1'
+    implementation files('C:\\Users\\yangwoo\\Desktop\\WildLift\\WildLift\\app\\libs\\YouTubeAndroidPlayerApi.jar')
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

@@ -11,6 +11,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cookandroid.wildlift.Lotation.LotationAdapter
+import com.cookandroid.wildlift.Patch.PatchAdapter
+import com.cookandroid.wildlift.Video.VideoAdapter
 import com.cookandroid.wildlift.champion.ChampionActivity
 import com.cookandroid.wildlift.item.ItemActivity
 import com.cookandroid.wildlift.rune.RunesActivity
@@ -19,13 +22,17 @@ import com.cookandroid.wildlift.spell.SpellActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
     // 패치 리사이클러뷰
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var layoutManagerLotation:RecyclerView.LayoutManager
+    private lateinit var layoutManagerVideo:RecyclerView.LayoutManager
+
     private var recyclerViewPatchAdapter = PatchAdapter()
     private var recyclerViewLotationAdapter = LotationAdapter()
+    private var recyclerViewVideoAdapter = VideoAdapter()
+
     private var splash = SplashActivity()
     private var lotationList = ArrayList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,11 +63,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         // 로테이션 만들기
         setLotation()
-        //아이템 선택 이벤트 호출
+
+        // 비디오 만들기
+        setVideo()
+        // 아이템 선택 이벤트 호출
         navigationView.setNavigationItemSelectedListener(this)
+
+
+
+
     }
     // 패치 리스트 만들기
-    fun setPatchNote() {
+    private fun setPatchNote() {
         recyclerPatch.setHasFixedSize(true) // LinearLayoutManager 객체 생성 후 layoutManager에 대입 및 recyclerView 고정크기 On
         layoutManager = LinearLayoutManager(this)
         (layoutManager as LinearLayoutManager).reverseLayout = true // 거꾸로 대입
@@ -69,7 +83,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         recyclerPatch.adapter = recyclerViewPatchAdapter
     }
 
-    fun setLotation() {
+    private fun setLotation() {
         recyclerLotation.setHasFixedSize(true)
         layoutManagerLotation = GridLayoutManager(this@MainActivity, 5)
         recyclerLotation.layoutManager = layoutManagerLotation
@@ -83,6 +97,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         recyclerViewLotationAdapter = LotationAdapter(lotationList)
         recyclerLotation.adapter = recyclerViewLotationAdapter
+    }
+
+    private fun setVideo() {
+        recyclerVideo.setHasFixedSize(true)
+        layoutManagerVideo = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerVideo.layoutManager = layoutManagerVideo
+        recyclerVideo.adapter = recyclerViewVideoAdapter
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 

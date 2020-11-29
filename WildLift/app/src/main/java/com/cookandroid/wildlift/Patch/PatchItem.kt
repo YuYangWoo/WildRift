@@ -1,4 +1,4 @@
-package com.cookandroid.wildlift
+package com.cookandroid.wildlift.Patch
 
 class PatchItem (
     var title: String ?= null,

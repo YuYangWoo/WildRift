@@ -1,4 +1,4 @@
-package com.cookandroid.wildlift
+package com.cookandroid.wildlift.Lotation
 
 import android.util.Log
 import com.google.firebase.database.*
