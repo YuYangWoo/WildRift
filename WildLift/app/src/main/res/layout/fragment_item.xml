@@ -28,7 +28,7 @@
                         style="@style/LevelTextView"
                         android:text="@string/final_item"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <com.cookandroid.wildlift.view.MyRecyclerView
                         android:id="@+id/finalRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -48,7 +48,7 @@
                         android:id="@+id/middleTextView"
                         android:text="@string/middle_item"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <com.cookandroid.wildlift.view.MyRecyclerView
                         android:id="@+id/middleRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -67,7 +67,7 @@
                         style="@style/LevelTextView"
                         android:text="@string/base_item"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <com.cookandroid.wildlift.view.MyRecyclerView
                         android:id="@+id/baseRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>

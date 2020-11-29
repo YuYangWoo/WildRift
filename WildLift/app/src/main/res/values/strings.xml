@@ -47,6 +47,16 @@
     <string name="controlRune">지배</string>
     <string name="resolutionRune">결의</string>
     <string name="inspirationRune">영감</string>
+    <string name="hp">HP</string>
+    <string name="mp">MP</string>
+    <string name="attack">공격력</string>
+    <string name="armor">방어력</string>
+    <string name="spell_power">주문력</string>
+    <string name="magic_resistance">마법 저항력</string>
+    <string name="attack_speed">공격속도</string>
+    <string name="cooltime">쿨타임 감소</string>
+    <string name="critical_chance">치명타 확률</string>
+    <string name="critical_damage">criticalDamage</string>
 
 
 </resources>

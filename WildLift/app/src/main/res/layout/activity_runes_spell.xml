@@ -34,7 +34,7 @@
                         style="@style/LevelTextView"
                         android:text="@string/mainRune"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <com.cookandroid.wildlift.view.MyRecyclerView
                         android:id="@+id/mainRuneRecyclerView"
                         android:layout_margin="5dp"
                         android:layout_width="match_parent"
@@ -54,7 +54,7 @@
                         style="@style/LevelTextView"
                         android:text="@string/controlRune"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <com.cookandroid.wildlift.view.MyRecyclerView
                         android:id="@+id/controlRuneRecyclerView"
                         android:layout_margin="5dp"
                         android:layout_width="match_parent"
@@ -74,7 +74,7 @@
                         style="@style/LevelTextView"
                         android:text="@string/resolutionRune"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <com.cookandroid.wildlift.view.MyRecyclerView
                         android:id="@+id/resolutionRuneRecyclerView"
                         android:layout_margin="5dp"
                         android:layout_width="match_parent"
@@ -94,7 +94,7 @@
                         style="@style/LevelTextView"
                         android:text="@string/inspirationRune"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <com.cookandroid.wildlift.view.MyRecyclerView
                         android:id="@+id/inspirationRuneRecyclerView"
                         android:layout_margin="5dp"
                         android:layout_width="match_parent"
