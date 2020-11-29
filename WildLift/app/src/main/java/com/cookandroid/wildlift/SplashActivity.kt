@@ -8,6 +8,7 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.cookandroid.wildlift.Lotation.LotationFactory
 import com.cookandroid.wildlift.Patch.PatchFactory
+import com.cookandroid.wildlift.Video.VideoFactory
 import com.cookandroid.wildlift.champion.ChampionFactory
 import com.cookandroid.wildlift.spell.SpellFactory
 import com.google.android.material.snackbar.Snackbar

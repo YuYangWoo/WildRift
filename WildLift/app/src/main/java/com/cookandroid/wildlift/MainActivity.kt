@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.wildlift.Lotation.LotationAdapter
 import com.cookandroid.wildlift.Patch.PatchAdapter
+import com.cookandroid.wildlift.Video.VideoAdapter
 import com.cookandroid.wildlift.champion.ChampionActivity
 import com.cookandroid.wildlift.item.ItemActivity
 import com.cookandroid.wildlift.rune.RunesActivity
 import com.cookandroid.wildlift.singleton.FirebaseSingleton
 import com.cookandroid.wildlift.spell.SpellActivity
 import com.google.android.material.navigation.NavigationView
-import com.google.android.youtube.player.YouTubePlayerView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
@@ -69,12 +69,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // 아이템 선택 이벤트 호출
         navigationView.setNavigationItemSelectedListener(this)
 
-//        // 유튜브 뷰
-//        youtubeView.initialize("develop", object : YouTubePlayer.OnInitializedListener
-//        { override fun onInitializationSuccess(provider: YouTubePlayer.Provider, player: YouTubePlayer, wasRestored: Boolean )
-//        { if (!wasRestored) { player.cueVideo(videoId) } }
-//            override fun onInitializationFailure(provider: YouTubePlayer.Provider?, result: YouTubeInitializationResult? )
-//            { } })
+
 
 
     }

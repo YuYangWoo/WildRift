@@ -32,6 +32,7 @@
         <activity android:name=".champion.championInfo.ChampionUniverse"></activity>
         <activity android:name=".champion.championInfo.ChampionAbility"/>
         <activity android:name=".Patch.PatchWebView"/>
+        <activity android:name=".Video.VideoActivity"/>
     </application>
 
 </manifest>

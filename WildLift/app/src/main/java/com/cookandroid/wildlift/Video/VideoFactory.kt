@@ -1,9 +1,7 @@
-package com.cookandroid.wildlift
+package com.cookandroid.wildlift.Video
 
 
 import android.util.Log
-import com.cookandroid.wildlift.Patch.PatchFactory
-import com.cookandroid.wildlift.Patch.PatchItem
 import com.google.firebase.database.*
 
 object VideoFactory {
