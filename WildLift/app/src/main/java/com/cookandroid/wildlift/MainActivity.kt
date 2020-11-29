@@ -8,23 +8,33 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.wildlift.champion.ChampionActivity
 import com.cookandroid.wildlift.item.ItemActivity
 import com.cookandroid.wildlift.rune.RunesActivity
 import com.cookandroid.wildlift.singleton.FirebaseSingleton
 import com.cookandroid.wildlift.spell.SpellActivity
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var database: FirebaseDatabase
-    private lateinit var databaseReference: DatabaseReference
+    // 패치 리사이클러뷰
+    private lateinit var layoutManager: RecyclerView.LayoutManager
+    private lateinit var layoutManagerLotation:RecyclerView.LayoutManager
+    private var recyclerViewPatchAdapter = PatchAdapter()
+    private var recyclerViewLotationAdapter = LotationAdapter()
+    private var splash = SplashActivity()
+    private var lotationList = ArrayList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.content_main)
+
+        // 파이어베이스 정보들 불러오기
         FirebaseSingleton.init()
+
         title = resources.getString(R.string.app_name)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -38,11 +48,42 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
+        // 버튼 클릭 이벤트
+        goActivity()
 
+        // 패치 리스트 만들기
+        setPatchNote()
+
+        // 로테이션 만들기
+        setLotation()
         //아이템 선택 이벤트 호출
         navigationView.setNavigationItemSelectedListener(this)
     }
+    // 패치 리스트 만들기
+    fun setPatchNote() {
+        recyclerPatch.setHasFixedSize(true) // LinearLayoutManager 객체 생성 후 layoutManager에 대입 및 recyclerView 고정크기 On
+        layoutManager = LinearLayoutManager(this)
+        (layoutManager as LinearLayoutManager).reverseLayout = true // 거꾸로 대입
+        (layoutManager as LinearLayoutManager).stackFromEnd = true // 처음부터 끝까지
+        recyclerPatch.layoutManager = layoutManager
+        recyclerPatch.adapter = recyclerViewPatchAdapter
+    }
 
+    fun setLotation() {
+        recyclerLotation.setHasFixedSize(true)
+        layoutManagerLotation = GridLayoutManager(this@MainActivity, 5)
+        recyclerLotation.layoutManager = layoutManagerLotation
+
+        for(i in splash.lotationList) {
+            for(j in splash.championList) {
+                if(i.name == j.name) {
+                    lotationList.add(j.image.toString())
+                }
+            }
+        }
+        recyclerViewLotationAdapter = LotationAdapter(lotationList)
+        recyclerLotation.adapter = recyclerViewLotationAdapter
+    }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
@@ -65,4 +106,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
+    private fun goActivity() {
+        btnChamp.setOnClickListener { startActivity(Intent(this, ChampionActivity::class.java)) }
+        btnItem.setOnClickListener { startActivity(Intent(this, ItemActivity::class.java)) }
+        btnSpell.setOnClickListener {  startActivity(Intent(this, SpellActivity::class.java))}
+        btnRune.setOnClickListener {  startActivity(Intent(this, RunesActivity::class.java))}
+    }
 }

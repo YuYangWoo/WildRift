@@ -20,9 +20,9 @@ class ChampionInfo : AppCompatActivity() {
     private lateinit var layoutManagerItem: RecyclerView.LayoutManager
     private lateinit var layoutManagerRune: RecyclerView.LayoutManager
     private lateinit var layoutManagerSpell: RecyclerView.LayoutManager
-    private var itemUrl = ArrayList<String>()
-    private var runeUrl = ArrayList<String>()
-    private var spellUrl = ArrayList<String>()
+    private var itemUrl = ArrayList<ItemAdapter.ItemType>()
+    private var runeUrl = ArrayList<ItemAdapter.ItemType>()
+    private var spellUrl = ArrayList<ItemAdapter.ItemType>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_champion_info)
@@ -43,7 +43,6 @@ class ChampionInfo : AppCompatActivity() {
 
             return@run ChampionInformation()
         }
-        Log.d("PASS", championInformation.skill[1].toString())
 
         // 추천 아이템 리스트
         recyclerItem.setHasFixedSize(true)
@@ -52,7 +51,7 @@ class ChampionInfo : AppCompatActivity() {
         for (i in FirebaseSingleton.itemList) {
             for (j in championInformation.item) {
                 if (i.name == j.name) {
-                    itemUrl.add(i.imageURL)
+                    itemUrl.add(ItemAdapter.ItemType(ItemAdapter.ItemType.ITEM, i.imageURL))
                 }
             }
         }
@@ -66,7 +65,7 @@ class ChampionInfo : AppCompatActivity() {
         for (i in FirebaseSingleton.runeList) {
             for (j in championInformation.rune) {
                 if (i.name == j.name) {
-                   runeUrl.add(i.image)
+                    runeUrl.add(ItemAdapter.ItemType(ItemAdapter.ItemType.RUNE, i.image))
                 }
             }
         }
@@ -80,13 +79,14 @@ class ChampionInfo : AppCompatActivity() {
         for (i in SpellFactory.spellList) {
             for (j in championInformation.spell) {
                 if (i.name == j.name) {
-                    spellUrl.add(i.image!!)
+                    spellUrl.add(ItemAdapter.ItemType(ItemAdapter.ItemType.SPELL, i.image!!))
                 }
             }
         }
         recyclerSpellAdapter = ItemAdapter(spellUrl)
         recyclerSpell.adapter = recyclerSpellAdapter
 
+        // 챔피언 이미지
         Glide.with(this) // 띄어줄 뷰를 명시
             .load(champImg) // 이미지 주소
             .into(imgChampImage) // list_log의 imageView에 띄우기
@@ -99,9 +99,17 @@ class ChampionInfo : AppCompatActivity() {
             intent.putExtra("championEngName", champEngName)
             startActivity(intent)
         }
+
         // 챔피언 유니버스 버튼
         btnUniverse.setOnClickListener {
             var intent = Intent(this, ChampionUniverse::class.java)
+            intent.putExtra("championEngName", champEngName)
+            startActivity(intent)
+        }
+
+        // 능력치/스킬 버튼
+        btnAbility.setOnClickListener {
+            var intent = Intent(this, ChampionAbility::class.java)
             intent.putExtra("championEngName", champEngName)
             startActivity(intent)
         }

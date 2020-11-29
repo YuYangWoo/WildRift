@@ -10,4 +10,6 @@ data class Item(
     var into: List<String>,
     var type: String,
     var level: Long,
-)
+) {
+    constructor() : this("", "", "", "", 0L, listOf(), listOf(), "", 0L)
+}

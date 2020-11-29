@@ -155,7 +155,7 @@
         app:layout_constraintWidth_percent="1">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnAbility"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -182,7 +182,7 @@
             android:layout_marginEnd="60dp"
             android:text="챔피언 유니버스"
             app:layout_constraintEnd_toStartOf="@+id/button4"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/btnAbility" />
 
         <Button
             android:id="@+id/button4"
