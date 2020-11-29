@@ -1,17 +1,15 @@
-package com.cookandroid.wildlift
+package com.cookandroid.wildlift.Patch
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.cookandroid.wildlift.PatchFactory.patchList
-import com.cookandroid.wildlift.champion.championInfo.ChampionInfo
-import com.cookandroid.wildlift.singleton.FirebaseSingleton
+import com.cookandroid.wildlift.Patch.PatchFactory.patchList
+import com.cookandroid.wildlift.R
+import com.cookandroid.wildlift.SplashActivity
 
 class PatchAdapter : RecyclerView.Adapter<PatchAdapter.CustomViewHolder>() {
     var splash = SplashActivity()

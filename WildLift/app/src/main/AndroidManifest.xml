@@ -31,7 +31,7 @@
         <activity android:name=".champion.championInfo.ChampionSkillSkin"></activity>
         <activity android:name=".champion.championInfo.ChampionUniverse"></activity>
         <activity android:name=".champion.championInfo.ChampionAbility"/>
-        <activity android:name=".PatchWebView"/>
+        <activity android:name=".Patch.PatchWebView"/>
     </application>
 
 </manifest>
