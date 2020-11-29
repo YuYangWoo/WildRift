@@ -56,7 +56,7 @@
     <string name="attack_speed">공격속도</string>
     <string name="cooltime">쿨타임 감소</string>
     <string name="critical_chance">치명타 확률</string>
-    <string name="critical_damage">criticalDamage</string>
+    <string name="critical_damage">치명타 데미지</string>
 
 
 </resources>
