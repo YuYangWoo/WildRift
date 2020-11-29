@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"
-            android:label = "와일드리프트"/>
+            android:label = "와일드리프트"
+            android:theme="@style/AppTheme2"/>
         <activity android:name=".champion.ChampionActivity"
           android:windowSoftInputMode="adjustNothing"></activity>
         <activity android:name=".item.ItemActivity"></activity>

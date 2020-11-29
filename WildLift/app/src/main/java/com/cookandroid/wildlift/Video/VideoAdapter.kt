@@ -25,7 +25,6 @@ class VideoAdapter :RecyclerView.Adapter<VideoAdapter.CustomViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        Log.d("test", splash.videoList[0].videoImage.toString())
         Glide.with(holder.itemView) // 띄어줄 뷰를 명시
             .load(splash.videoList[position].videoImage) // 이미지 주소
             .into(holder.videoImage) // list_log의 imageView에 띄우기
@@ -43,7 +42,7 @@ class VideoAdapter :RecyclerView.Adapter<VideoAdapter.CustomViewHolder>(){
                     var item = videoList[pos]
                     var intent = Intent(itemView.context, VideoActivity::class.java)
                     intent.putExtra("videoId", item.id)
-                    Log.d("idbefore",item.id.toString() )
+                    intent.putExtra("videoTxt", item.videoTxt)
                     ContextCompat.startActivity(itemView.context, intent, null)
                 }
             }

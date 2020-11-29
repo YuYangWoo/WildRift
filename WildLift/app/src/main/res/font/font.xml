@@ -8,6 +8,10 @@
     <font
         android:fontStyle = "normal"
         android:fontWeight = "400"
+        android:font = "@font/maplestory_light"/>
+    <font
+        android:fontStyle = "normal"
+        android:fontWeight = "400"
         android:font = "@font/notosanskrblack"/>
 
     <font
@@ -34,4 +38,9 @@
         android:fontStyle = "normal"
         android:fontWeight = "400"
         android:font = "@font/notosanskrthin"/>
+
+    <font
+        android:fontStyle = "normal"
+        android:fontWeight = "400"
+        android:font = "@font/scdream4"/>
 </font-family>
