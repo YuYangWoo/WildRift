@@ -22,18 +22,30 @@
         </activity>
         <activity android:name=".MainActivity"
             android:label = "와일드리프트"
-            android:theme="@style/AppTheme2"/>
+            android:theme="@style/AppTheme2"
+            android:screenOrientation="portrait"
+            />
         <activity android:name=".champion.ChampionActivity"
-          android:windowSoftInputMode="adjustNothing"></activity>
-        <activity android:name=".item.ItemActivity"></activity>
-        <activity android:name=".rune.RunesActivity"></activity>
-        <activity android:name=".champion.championInfo.ChampionInfo"></activity>
-        <activity android:name=".spell.SpellActivity"></activity>
-        <activity android:name=".champion.championInfo.ChampionSkillSkin"></activity>
-        <activity android:name=".champion.championInfo.ChampionUniverse"></activity>
-        <activity android:name=".champion.championInfo.ChampionAbility"/>
-        <activity android:name=".Patch.PatchWebView"/>
-        <activity android:name=".Video.VideoActivity"/>
+          android:windowSoftInputMode="adjustNothing"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".item.ItemActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".rune.RunesActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".champion.championInfo.ChampionInfo"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".spell.SpellActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".champion.championInfo.ChampionSkillSkin"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".champion.championInfo.ChampionUniverse"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".champion.championInfo.ChampionAbility"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Patch.PatchWebView"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Video.VideoActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

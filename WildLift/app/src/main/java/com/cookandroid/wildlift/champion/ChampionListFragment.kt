@@ -15,12 +15,14 @@ import com.cookandroid.wildlift.R
 import com.cookandroid.wildlift.SplashActivity
 import com.google.firebase.database.*
 
-class ChampionListFragment(val tabTitle: Int) : Fragment() {
+class ChampionListFragment() : Fragment() {
 
+    var tabTitle: Int ?= null
+    constructor(tabTitle:Int) :this() {
+        this.tabTitle = tabTitle
+    }
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private var recyclerViewAdapter = ChampionAdapter()
-    private lateinit var database: FirebaseDatabase
-    private lateinit var dbChampion: DatabaseReference
     private var search = ""
     // 챔피언 리스트
     private var championList = SplashActivity()
@@ -49,7 +51,7 @@ class ChampionListFragment(val tabTitle: Int) : Fragment() {
                 for (item in championList.championList) {
                     var countList = item.position!!.split(",")
                     for (pos in countList) {
-                        if (pos == getString(tabTitle)) {
+                        if (pos == getString(tabTitle!!)) {
                             list.add(item)
                         }
                     }

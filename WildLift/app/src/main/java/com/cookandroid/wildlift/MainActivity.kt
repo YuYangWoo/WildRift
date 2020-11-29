@@ -1,6 +1,7 @@
 package com.cookandroid.wildlift
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -42,6 +43,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // 파이어베이스 정보들 불러오기
         FirebaseSingleton.init()
 
+        // 툴바, 네비게이션바 init
+        initBar()
+
+        // 버튼 클릭 이벤트
+        goActivity()
+
+        // 패치 리스트 만들기
+        setPatchNote()
+
+        // 로테이션 만들기
+        setLotation()
+
+        // 비디오 만들기
+        setVideo()
+    }
+
+    private fun initBar() {
         title = resources.getString(R.string.app_name)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -55,24 +73,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
-        // 버튼 클릭 이벤트
-        goActivity()
 
-        // 패치 리스트 만들기
-        setPatchNote()
-
-        // 로테이션 만들기
-        setLotation()
-
-        // 비디오 만들기
-        setVideo()
         // 아이템 선택 이벤트 호출
         navigationView.setNavigationItemSelectedListener(this)
-
-
-
-
     }
+
     // 패치 리스트 만들기
     private fun setPatchNote() {
         recyclerPatch.setHasFixedSize(true) // LinearLayoutManager 객체 생성 후 layoutManager에 대입 및 recyclerView 고정크기 On
@@ -99,12 +104,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         recyclerLotation.adapter = recyclerViewLotationAdapter
     }
 
+    // 유튜브 영상 리스트
     private fun setVideo() {
         recyclerVideo.setHasFixedSize(true)
         layoutManagerVideo = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerVideo.layoutManager = layoutManagerVideo
         recyclerVideo.adapter = recyclerViewVideoAdapter
     }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {

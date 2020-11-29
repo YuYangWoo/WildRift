@@ -31,7 +31,7 @@ class ChampionActivity : AppCompatActivity() {
 
         // TabLayout에 ViewPager를 연동
         TabLayoutMediator(tabLyChampion, viewPager, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-            tab.text = getString(adapter.fragmentList[position].tabTitle)
+            tab.text = getString(adapter.fragmentList[position].tabTitle!!)
         }).attach()
     }
 
