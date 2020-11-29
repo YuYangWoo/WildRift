@@ -110,7 +110,7 @@ class ChampionInfo : AppCompatActivity() {
         // 능력치/스킬 버튼
         btnAbility.setOnClickListener {
             var intent = Intent(this, ChampionAbility::class.java)
-            intent.putExtra("championEngName", champEngName)
+            intent.putExtra("championInformation", championInformation)
             startActivity(intent)
         }
     }

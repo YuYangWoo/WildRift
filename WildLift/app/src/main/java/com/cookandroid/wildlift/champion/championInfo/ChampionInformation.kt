@@ -1,5 +1,7 @@
 package com.cookandroid.wildlift.champion.championInfo
 
+import java.io.Serializable
+
 data class ChampionInformation(
     var name: String,
     var attack: String,
@@ -17,7 +19,7 @@ data class ChampionInformation(
     var spell: List<SpellName>,
     var item: List<ItemName>
 
-) {
+) : Serializable {
     constructor() : this("", "", "", "", "", "", "" ,"", "", "", "", listOf(), listOf(), listOf(), listOf())
 
     data class Skill(
@@ -25,25 +27,25 @@ data class ChampionInformation(
         var name: String,
         var coolTime: String,
         var description: String
-    ) {
+    ) : Serializable {
         constructor() : this("", "", "", "")
     }
 
     data class SpellName(
         var name: String
-    ) {
+    ) : Serializable {
         constructor() : this("")
     }
 
     data class ItemName(
         var name: String
-    ) {
+    ) : Serializable {
         constructor() : this("")
     }
 
     data class RuneName(
         var name: String
-    ) {
+    ) : Serializable {
         constructor() : this("")
     }
 }
