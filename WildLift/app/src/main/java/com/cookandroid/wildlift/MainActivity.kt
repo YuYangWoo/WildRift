@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var recyclerViewPatchAdapter = PatchAdapter()
     private var recyclerViewLotationAdapter = LotationAdapter()
     private var recyclerViewVideoAdapter = VideoAdapter()
-    private var recyclerViewNoteAdapter = PatchAdapter()
+    private var recyclerViewNoteAdapter = WildNoteAdapter()
 
 
     private var splash = SplashActivity()
