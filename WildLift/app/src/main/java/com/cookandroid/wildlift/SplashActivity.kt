@@ -31,6 +31,7 @@ class SplashActivity : AppCompatActivity(), InstallStateUpdatedListener {
     var spellList = SpellFactory.spellList
     var patchList = PatchFactory.patchList
     var lotationList = LotationFactory.lotationList
+    var noteList = PatchFactory.noteList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
