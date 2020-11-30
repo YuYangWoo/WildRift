@@ -9,6 +9,7 @@ import com.cookandroid.wildlift.R
 import kotlinx.android.synthetic.main.activity_skill_skin.*
 
 class ChampionUniverse : AppCompatActivity() {
+    private lateinit var champEngName:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -21,8 +22,9 @@ class ChampionUniverse : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar2)
         setSupportActionBar(toolbar)
 
-        var champEngName = intent.getStringExtra("championEngName")
+        champEngName = intent.getStringExtra("championEngName")!!
 
+        except()
         // ActionBar Home 버튼 Enable
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -33,6 +35,20 @@ class ChampionUniverse : AppCompatActivity() {
         }
         webView.loadUrl("https://universe.leagueoflegends.com/ko_KR/champion/$champEngName/")
 
+    }
+
+    // 예외 챔피언 처리
+    private fun except() {
+        when(champEngName) {
+            "lee-sin" -> champEngName = "leesin"
+            "master-yi" -> champEngName = "masteryi"
+            "dr-mundo" -> champEngName = "drmundo"
+            "miss-fortune" -> champEngName = "missfortune"
+            "xin-zhao" -> champEngName = "xinzhao"
+            "aurelion-sol" -> champEngName = "aurelionsol"
+            "jarvan-iv" -> champEngName = "jarvaniv"
+            "twisted-fate" -> champEngName = "twistedfate"
+        }
     }
 
     override fun onBackPressed() {

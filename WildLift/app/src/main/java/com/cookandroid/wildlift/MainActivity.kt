@@ -29,10 +29,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var layoutManagerLotation:RecyclerView.LayoutManager
     private lateinit var layoutManagerVideo:RecyclerView.LayoutManager
+    private lateinit var layoutManagerNote: RecyclerView.LayoutManager
 
     private var recyclerViewPatchAdapter = PatchAdapter()
     private var recyclerViewLotationAdapter = LotationAdapter()
     private var recyclerViewVideoAdapter = VideoAdapter()
+    private var recyclerViewNoteAdapter = PatchAdapter()
+
 
     private var splash = SplashActivity()
     private var lotationList = ArrayList<String>()
@@ -57,6 +60,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         // 비디오 만들기
         setVideo()
+
+        // 왈백 패치노트
+        setWildNote()
     }
 
     private fun initBar() {
@@ -110,6 +116,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         layoutManagerVideo = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerVideo.layoutManager = layoutManagerVideo
         recyclerVideo.adapter = recyclerViewVideoAdapter
+    }
+
+    private fun setWildNote() {
+        recyclerNote.setHasFixedSize(true)
+        layoutManagerNote = LinearLayoutManager(this)
+        (layoutManagerNote as LinearLayoutManager).reverseLayout = true // 거꾸로 대입
+        (layoutManagerNote as LinearLayoutManager).stackFromEnd = true // 처음부터 끝까지
+        recyclerNote.layoutManager = layoutManagerNote
+        recyclerNote.adapter = recyclerViewNoteAdapter
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
