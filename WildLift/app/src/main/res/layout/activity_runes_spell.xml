@@ -9,7 +9,7 @@
     </data>
 
     <ScrollView
-        android:background="#3949AB"
+        android:background="@color/subTitle"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
