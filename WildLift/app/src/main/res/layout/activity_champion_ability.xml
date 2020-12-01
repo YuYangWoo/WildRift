@@ -6,7 +6,7 @@
     <data>
         <variable
             name="activity"
-            type="com.cookandroid.wildlift.champion.championInfo.ChampionAbility" />
+            type="com.cookandroid.wildRift.champion.championInfo.ChampionAbility" />
 
         <variable
             name="image"
@@ -14,7 +14,7 @@
 
         <variable
             name="information"
-            type="com.cookandroid.wildlift.champion.championInfo.ChampionInformation" />
+            type="com.cookandroid.wildRift.champion.championInfo.ChampionInformation" />
     </data>
 
     <LinearLayout
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"/>
                 </LinearLayout>
 
-                <com.cookandroid.wildlift.view.FullRecyclerView
+                <com.cookandroid.wildRift.view.FullRecyclerView
                     android:id="@+id/recyclerView"
                     android:background="#e9ebf3"
                     android:layout_width="match_parent"

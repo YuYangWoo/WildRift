@@ -5,7 +5,7 @@
     <data>
         <variable
             name="activity"
-            type="com.cookandroid.wildlift.item.ItemActivity" />
+            type="com.cookandroid.wildRift.item.ItemActivity" />
     </data>
 
     <LinearLayout

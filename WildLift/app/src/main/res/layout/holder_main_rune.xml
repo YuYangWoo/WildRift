@@ -6,7 +6,7 @@
     <data>
         <variable
             name="holder"
-            type="com.cookandroid.wildlift.rune.MainRuneHolder" />
+            type="com.cookandroid.wildRift.rune.MainRuneHolder" />
     </data>
 
     <ImageView

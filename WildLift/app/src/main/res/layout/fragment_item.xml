@@ -5,7 +5,7 @@
     <data>
         <variable
             name="fragment"
-            type="com.cookandroid.wildlift.item.fragment.ItemFragment" />
+            type="com.cookandroid.wildRift.item.fragment.ItemFragment" />
     </data>
 
     <ScrollView
@@ -28,7 +28,7 @@
                         style="@style/LevelTextView"
                         android:text="@string/final_item"/>
 
-                    <com.cookandroid.wildlift.view.FullRecyclerView
+                    <com.cookandroid.wildRift.view.FullRecyclerView
                         android:id="@+id/finalRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -48,7 +48,7 @@
                         android:id="@+id/middleTextView"
                         android:text="@string/middle_item"/>
 
-                    <com.cookandroid.wildlift.view.FullRecyclerView
+                    <com.cookandroid.wildRift.view.FullRecyclerView
                         android:id="@+id/middleRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -67,7 +67,7 @@
                         style="@style/LevelTextView"
                         android:text="@string/base_item"/>
 
-                    <com.cookandroid.wildlift.view.FullRecyclerView
+                    <com.cookandroid.wildRift.view.FullRecyclerView
                         android:id="@+id/baseRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="skill"
-            type="com.cookandroid.wildlift.champion.championInfo.ChampionInformation.Skill" />
+            type="com.cookandroid.wildRift.champion.championInfo.ChampionInformation.Skill" />
     </data>
 
     <LinearLayout

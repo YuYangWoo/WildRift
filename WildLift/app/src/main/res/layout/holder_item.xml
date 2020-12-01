@@ -7,7 +7,7 @@
     <data>
         <variable
             name="holder"
-            type="com.cookandroid.wildlift.item.ItemHolder" />
+            type="com.cookandroid.wildRift.item.ItemHolder" />
     </data>
 
 

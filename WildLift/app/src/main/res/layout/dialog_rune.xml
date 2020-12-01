@@ -5,7 +5,7 @@
     <data>
         <variable
             name="dialog"
-            type="com.cookandroid.wildlift.rune.RuneDialog" />
+            type="com.cookandroid.wildRift.rune.RuneDialog" />
     </data>
 
     <ScrollView

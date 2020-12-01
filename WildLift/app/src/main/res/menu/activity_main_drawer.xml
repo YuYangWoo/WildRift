@@ -42,6 +42,10 @@
                 android:id = "@+id/videoBoard"
                 android:icon="@drawable/ic_menu_send"
                 android:title="동영상게시판(개발예정)"/>
+            <item
+                android:id = "@+id/duoBoard"
+                android:icon="@drawable/ic_menu_send"
+                android:title="듀오구해요(개발예정)"/>
         </menu>
     </item>
 

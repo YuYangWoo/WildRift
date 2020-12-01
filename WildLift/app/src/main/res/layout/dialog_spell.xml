@@ -5,7 +5,7 @@
     <data>
         <variable
             name="dialog"
-            type="com.cookandroid.wildlift.spell.SpellDialog" />
+            type="com.cookandroid.wildRift.spell.SpellDialog" />
     </data>
 
     <ScrollView

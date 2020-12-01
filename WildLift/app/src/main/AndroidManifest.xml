@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cookandroid.wildlift">
+    package="com.cookandroid.wildRift">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,14 +13,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".SplashActivity"
-            android:label="와일드리프트">
+            android:name="com.cookandroid.wildRift.SplashActivity"
+            android:label="왈백과사전">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity android:name="com.cookandroid.wildRift.MainActivity"
             android:label = "와일드리프트"
             android:theme="@style/AppTheme2"
             android:screenOrientation="portrait"
@@ -28,25 +28,23 @@
         <activity android:name=".champion.ChampionActivity"
           android:windowSoftInputMode="adjustNothing"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".item.ItemActivity"
+        <activity android:name="com.cookandroid.wildRift.item.ItemActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".rune.RunesActivity"
+        <activity android:name="com.cookandroid.wildRift.rune.RunesActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".champion.championInfo.ChampionInfo"
+        <activity android:name="com.cookandroid.wildRift.champion.championInfo.ChampionInfo"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".spell.SpellActivity"
+        <activity android:name="com.cookandroid.wildRift.spell.SpellActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".champion.championInfo.ChampionSkillSkin"
+        <activity android:name="com.cookandroid.wildRift.champion.championInfo.ChampionSkillSkin"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".champion.championInfo.ChampionUniverse"
+        <activity android:name="com.cookandroid.wildRift.champion.championInfo.ChampionUniverse"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".champion.championInfo.ChampionAbility"
+        <activity android:name="com.cookandroid.wildRift.champion.championInfo.ChampionAbility"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Patch.PatchWebView"
+        <activity android:name="com.cookandroid.wildRift.Patch.PatchWebView"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Video.VideoActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Patch.DialogNote"
+        <activity android:name="com.cookandroid.wildRift.Video.VideoActivity"
             android:screenOrientation="portrait"/>
     </application>
 
