@@ -53,7 +53,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
 
                 android:id="@+id/cooltime"
-                android:text="@{skill.coolTime}"
+                coolTimeAndCost="@{skill.coolTime}"
 
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
