@@ -3,6 +3,7 @@ package com.cookandroid.wildlift.champion.championInfo
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -112,6 +113,11 @@ class ChampionInfo : AppCompatActivity() {
             var intent = Intent(this, ChampionAbility::class.java)
             intent.putExtra("championInformation", championInformation)
             startActivity(intent)
+        }
+
+        // 미구현 버튼
+        btnNo.setOnClickListener {
+            Toast.makeText(this,"미구현 버튼입니다. 추후 업데이트 예정입니다.",Toast.LENGTH_SHORT).show()
         }
     }
 }
