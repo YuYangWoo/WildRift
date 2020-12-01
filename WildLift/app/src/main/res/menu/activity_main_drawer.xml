@@ -27,6 +27,32 @@
 
         </menu>
     </item>
+
+    <item android:title="커뮤니티">
+        <menu>
+            <item
+                android:id = "@+id/freeBoard"
+                android:icon="@drawable/ic_menu_send"
+                android:title="자유게시판(개발예정)"/>
+            <item
+                android:id = "@+id/tipBoard"
+                android:icon="@drawable/ic_menu_send"
+                android:title="꿀팁게시판(개발예정)"/>
+            <item
+                android:id = "@+id/videoBoard"
+                android:icon="@drawable/ic_menu_send"
+                android:title="동영상게시판(개발예정)"/>
+        </menu>
+    </item>
+
+    <item android:title="앱정보">
+        <menu>
+            <item
+                android:id = "@+id/developerInfo"
+                android:icon="@drawable/ic_menu_send"
+                android:title="개발자 정보"/>
+        </menu>
+    </item>
 </menu>
 
 

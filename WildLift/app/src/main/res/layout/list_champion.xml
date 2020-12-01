@@ -50,8 +50,10 @@
         android:id="@+id/txtIP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
+        android:textColor="#000000"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,8 +61,10 @@
         android:id="@+id/txtRp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="15dp"
+        android:textColor="#000000"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -68,12 +72,12 @@
         android:id="@+id/bluepowder"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/bluepowder"
         app:layout_constraintEnd_toStartOf="@+id/txtIP"
         app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtIP"
         app:layout_constraintWidth_percent="0.05" />
 
     <ImageView
@@ -81,9 +85,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/wildcore"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/txtRp"
         app:layout_constraintEnd_toStartOf="@id/txtRp"
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintWidth_percent="0.05" />

@@ -51,6 +51,7 @@
         app:layout_constraintHeight_percent="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cstLyMainTop2"
+        android:background="?attr/selectableItemBackground"
         app:layout_constraintWidth_percent="0.95">
 
         <TextView
@@ -207,6 +208,7 @@
         app:layout_constraintHeight_percent="0.35"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cstLyMainMiddle2"
+        android:background="?attr/selectableItemBackground"
         app:layout_constraintWidth_percent="0.95">
 
         <TextView
