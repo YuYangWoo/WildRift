@@ -39,6 +39,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var recyclerViewVideoAdapter = VideoAdapter()
     private var recyclerViewNoteAdapter = WildNoteAdapter()
 
+    // BackpressCloseHandler 객체화
+    private val backPressCloseHandler = BackPressCloseHandler(this)
 
     private var splash = SplashActivity()
     private var lotationList = ArrayList<String>()
@@ -170,4 +172,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         btnSpell.setOnClickListener {  startActivity(Intent(this, SpellActivity::class.java))}
         btnRune.setOnClickListener {  startActivity(Intent(this, RunesActivity::class.java))}
     }
+
+    // Back 버튼을 눌렀을 때
+    override fun onBackPressed() {
+        backPressCloseHandler.onBackPressed()
+    }
+
 }
