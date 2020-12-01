@@ -1,5 +1,6 @@
 package com.cookandroid.wildlift.singleton
 
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -122,12 +123,16 @@ object DataBindingAdapter {
         }
 
         val index = data.lastIndexOf("초")
-        if (data.length == index - 1) {
-            view.text = data
+        val coolTime = data.substring(0 until index)
+        val cost = if (data.length > index + 2) {
+            data.substring(index + 2)
         } else {
-            val coolTime = data.substring(0 until index)
-            val cost = data.substring(index + 2)
+            ""
+        }
 
+        if (cost == "") {
+            view.text = "${coolTime}초"
+        } else {
             view.text = "${coolTime}초 MP : ${cost}"
         }
     }
