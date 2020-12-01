@@ -112,4 +112,23 @@ object DataBindingAdapter {
     fun setCriticalDamage(view: TextView, criticalDamage: String) {
         view.text = "${view.context.getString(R.string.critical_damage)} : $criticalDamage"
     }
+
+    @JvmStatic
+    @BindingAdapter("coolTimeAndCost")
+    fun setCoolTimeAndCost(view: TextView, data: String) {
+        if (data == "패시브") {
+            view.text = data
+            return
+        }
+
+        val index = data.lastIndexOf("초")
+        if (data.length == index - 1) {
+            view.text = data
+        } else {
+            val coolTime = data.substring(0 until index)
+            val cost = data.substring(index + 2)
+
+            view.text = "${coolTime}초 MP : ${cost}"
+        }
+    }
 }

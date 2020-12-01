@@ -71,12 +71,6 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    hp="@{information.hp}"
-                    style="@style/AbilityText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
                     mp="@{information.mp}"
                     style="@style/AbilityText"
                     android:layout_width="match_parent"
