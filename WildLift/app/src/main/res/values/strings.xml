@@ -42,22 +42,22 @@
     <string name="magic_shoes">Magic Shoes</string>
     <string name="champion_title">ChampionList</string>
     <string name="champion_info_title">ChampionInfo</string>
-    <string name="mainRune">핵심</string>
-    <string name="subRune">보조</string>
-    <string name="controlRune">지배</string>
+    <string name="mainRune" translatable="false">핵심</string>
+    <string name="subRune" translatable="false">보조</string>
+    <string name="controlRune" translatable="false">지배</string>
     <string name="resolutionRune">결의</string>
     <string name="inspirationRune">영감</string>
-    <string name="hp">HP</string>
-    <string name="mp">MP</string>
+    <string name="hp" translatable="false">HP</string>
+    <string name="mp" translatable="false">MP</string>
     <string name="attack">공격력</string>
     <string name="armor">방어력</string>
     <string name="spell_power">주문력</string>
     <string name="magic_resistance">마법 저항력</string>
     <string name="attack_speed">공격속도</string>
-    <string name="cooltime">쿨타임 감소</string>
+    <string name="cooltime" translatable="false">쿨타임 감소</string>
     <string name="critical_chance">치명타 확률</string>
-    <string name="critical_damage">치명타 데미지</string>
-    <string name="announce">공지사항</string>
+    <string name="critical_damage" translatable="false">치명타 데미지</string>
+    <string name="announce" translatable="false">공지사항</string>
 
 
 </resources>

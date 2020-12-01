@@ -1,28 +1,27 @@
-package com.cookandroid.wildlift
+package com.cookandroid.wildlift.Patch
 
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import com.cookandroid.wildlift.Patch.WildNoteItem
-import com.cookandroid.wildlift.rune.Rune
-import kotlinx.android.synthetic.main.dialog_note.*
+import com.cookandroid.wildlift.R
 
-class DialogNote(context: Context, note: WildNoteItem) : Dialog(context) {
-    private var note = note
+class DialogDevelopment(context: Context) : Dialog(context) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.dialog_note, null)
 
         var txt = view.findViewById<TextView>(R.id.txtContent)
-       txt.text = note.content
-        Log.d("test", note.content!!)
+        var txtNoteTitle = view.findViewById<TextView>(R.id.txtNoteTitle)
+        var txtLink = view.findViewById<TextView>(R.id.txtLink)
+        txtNoteTitle.text = "개발자 정보"
+        txt.text ="Development by YYW & KTJ\nDesgined by LHG\n앱 문의"
+        txtLink.text = "https://open.kakao.com/o/gJtjhtJc"
+
         setContentView(view)
+
     }
+
 }

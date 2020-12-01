@@ -17,13 +17,16 @@ import com.google.firebase.database.*
 
 class ChampionListFragment() : Fragment() {
 
-    var tabTitle: Int ?= null
-    constructor(tabTitle:Int) :this() {
+    var tabTitle: Int? = null
+
+    constructor(tabTitle: Int) : this() {
         this.tabTitle = tabTitle
     }
+
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private var recyclerViewAdapter = ChampionAdapter()
     private var search = ""
+
     // 챔피언 리스트
     private var championList = SplashActivity()
     private var list = ArrayList<ChampionItem>()

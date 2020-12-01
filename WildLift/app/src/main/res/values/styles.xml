@@ -6,7 +6,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/statebar</item>
         <item name="colorAccent">@color/statebar</item>
-
         <item name="colorControlNormal">#FFFFFF</item>
         <item name="fontFamily">@font/scdream4</item>
     </style>
@@ -16,7 +15,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/statebar</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name = "windowNoTitle">true</item>
+        <item name ="windowNoTitle">true</item>
     </style>
 
     <!-- Base application theme. -->

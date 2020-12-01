@@ -1,9 +1,9 @@
 package com.cookandroid.wildlift
 
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -13,7 +13,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.wildlift.Lotation.LotationAdapter
+import com.cookandroid.wildlift.Patch.DialogDevelopment
+import com.cookandroid.wildlift.Patch.DialogNote
 import com.cookandroid.wildlift.Patch.PatchAdapter
+import com.cookandroid.wildlift.Patch.WildNoteAdapter
 import com.cookandroid.wildlift.Video.VideoAdapter
 import com.cookandroid.wildlift.champion.ChampionActivity
 import com.cookandroid.wildlift.item.ItemActivity
@@ -141,6 +144,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.spell -> {
                 startActivity(Intent(this, SpellActivity::class.java))
+            }
+            R.id.freeBoard -> {
+                Toast.makeText(this,"현재 탭은 개발 중입니다. 다음버전에서 확인하세요 !",Toast.LENGTH_LONG).show()
+            }
+            R.id.tipBoard -> {
+                Toast.makeText(this,"현재 탭은 개발 중입니다. 다음버전에서 확인하세요 !",Toast.LENGTH_LONG).show()
+            }
+            R.id.videoBoard -> {
+                Toast.makeText(this,"현재 탭은 개발 중입니다. 다음버전에서 확인하세요 !",Toast.LENGTH_LONG).show()
+            }
+            R.id.developerInfo -> {
+              DialogDevelopment(this).show()
             }
         }
 
