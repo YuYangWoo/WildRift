@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity(), InstallStateUpdatedListener {
         AppUpdateManagerFactory.create(this)
     }
     private val MY_REQUEST_CODE = 100
-    private val splashTime:Long = 2000
+    private val splashTime:Long = 1000
 
     var videoList = VideoFactory.videoList
     var championList = ChampionFactory.championList

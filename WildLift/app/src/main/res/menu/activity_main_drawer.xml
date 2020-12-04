@@ -55,6 +55,10 @@
                 android:id = "@+id/developerInfo"
                 android:icon="@drawable/ic_menu_send"
                 android:title="개발자 정보"/>
+            <item
+                android:id = "@+id/law"
+                android:icon="@drawable/ic_menu_send"
+                android:title="개인정보처리방침"/>
         </menu>
     </item>
 </menu>

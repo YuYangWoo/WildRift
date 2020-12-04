@@ -161,6 +161,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.duoBoard -> {
                 Toast.makeText(this, "현재 탭은 개발 중입니다. 다음버전에서 확인하세요 !", Toast.LENGTH_LONG).show()
             }
+            R.id.law -> {
+                startActivity(Intent(this,Law::class.java))
+            }
         }
 
         val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
