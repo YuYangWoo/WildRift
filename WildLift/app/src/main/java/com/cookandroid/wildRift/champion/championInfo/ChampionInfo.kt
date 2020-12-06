@@ -10,6 +10,8 @@ import com.bumptech.glide.Glide
 import com.cookandroid.wildRift.R
 import com.cookandroid.wildRift.singleton.FirebaseSingleton
 import com.cookandroid.wildRift.spell.SpellFactory
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import kotlinx.android.synthetic.main.activity_champion_info.*
 
 class ChampionInfo : AppCompatActivity() {
@@ -118,5 +120,10 @@ class ChampionInfo : AppCompatActivity() {
         btnNo.setOnClickListener {
             Toast.makeText(this,"미구현 버튼입니다. 추후 업데이트 예정입니다.",Toast.LENGTH_SHORT).show()
         }
+
+        // 배너광고
+        var mAdView = findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
     }
 }

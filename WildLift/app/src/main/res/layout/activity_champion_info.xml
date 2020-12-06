@@ -208,5 +208,5 @@
             app:layout_constraintTop_toBottomOf="@+id/btnSkillSkin" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+<include layout="@layout/admob_bottom"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

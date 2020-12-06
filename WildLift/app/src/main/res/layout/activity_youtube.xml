@@ -35,5 +35,5 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/youtubeView" />
-
+<include layout="@layout/admob_bottom"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
