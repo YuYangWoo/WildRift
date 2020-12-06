@@ -16,8 +16,6 @@ object DataBindingAdapter {
     fun setItemImage(view: ImageView, item: Item) {
         Glide.with(view.context)
             .load(item.imageURL)
-            .placeholder(R.drawable.ic_coin)
-            .error(R.drawable.ic_menu_send)
             .into(view)
     }
 
@@ -26,7 +24,6 @@ object DataBindingAdapter {
     fun setRuneImage(view: ImageView, rune: Rune) {
         Glide.with(view.context)
             .load(rune.image)
-            .error(R.drawable.ic_menu_send)
             .into(view)
     }
 
@@ -35,7 +32,6 @@ object DataBindingAdapter {
     fun setRuneImage(view: ImageView, spell: SpellItem) {
         Glide.with(view.context)
             .load(spell.image)
-            .error(R.drawable.ic_menu_send)
             .into(view)
     }
 
@@ -50,7 +46,6 @@ object DataBindingAdapter {
     fun setImage(view: ImageView, image: String) {
         Glide.with(view)
             .load(image)
-            .error(R.drawable.ic_menu_send)
             .into(view)
     }
 
