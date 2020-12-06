@@ -30,7 +30,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:layout_weight="1">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -64,59 +65,59 @@
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintEnd_toEndOf="parent">
 
-                <TextView
-                    hp="@{information.hp}"
-                    style="@style/AbilityText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    <TextView
+                        hp="@{information.hp}"
+                        style="@style/AbilityText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                <TextView
-                    mp="@{information.mp}"
-                    style="@style/AbilityText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    <TextView
+                        mp="@{information.mp}"
+                        style="@style/AbilityText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                <TextView
-                    attack="@{information.attack}"
-                    style="@style/AbilityText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    <TextView
+                        attack="@{information.attack}"
+                        style="@style/AbilityText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                <TextView
-                    spell_power="@{information.spellPower}"
-                    style="@style/AbilityText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    <TextView
+                        spell_power="@{information.spellPower}"
+                        style="@style/AbilityText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                <TextView
-                    armor="@{information.armor}"
-                    style="@style/AbilityText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    <TextView
+                        armor="@{information.armor}"
+                        style="@style/AbilityText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                <TextView
-                    magic_resistance="@{information.magicResistance}"
-                    style="@style/AbilityText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    <TextView
+                        magic_resistance="@{information.magicResistance}"
+                        style="@style/AbilityText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                <TextView
-                    attack_speed="@{information.attackSpeed}"
-                    style="@style/AbilityText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    <TextView
+                        attack_speed="@{information.attackSpeed}"
+                        style="@style/AbilityText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                <TextView
-                    critical_chance="@{information.criticalChance}"
-                    style="@style/AbilityText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    <TextView
+                        critical_chance="@{information.criticalChance}"
+                        style="@style/AbilityText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                <TextView
-                    critical_damage="@{information.criticalDamage}"
-                    style="@style/AbilityText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    <TextView
+                        critical_damage="@{information.criticalDamage}"
+                        style="@style/AbilityText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <com.cookandroid.wildRift.view.FullRecyclerView
@@ -132,5 +133,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+        <include layout="@layout/admob_bottom"/>
     </LinearLayout>
 </layout>

@@ -26,4 +26,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="1" />
+    <include layout="@layout/admob_bottom"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

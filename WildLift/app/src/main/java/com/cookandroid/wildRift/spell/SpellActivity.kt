@@ -35,6 +35,7 @@ class SpellActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = recyclerViewAdapter
 
+        // 배너광고
         var mAdView = findViewById<AdView>(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)

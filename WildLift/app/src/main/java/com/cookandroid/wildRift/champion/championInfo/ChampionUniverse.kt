@@ -6,6 +6,8 @@ import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.cookandroid.wildRift.R
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import kotlinx.android.synthetic.main.activity_skill_skin.*
 
 class ChampionUniverse : AppCompatActivity() {
@@ -35,6 +37,10 @@ class ChampionUniverse : AppCompatActivity() {
         }
         webView.loadUrl("https://universe.leagueoflegends.com/ko_KR/champion/$champEngName/")
 
+        // 배너광고
+        var mAdView = findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
     }
 
     // 예외 챔피언 처리

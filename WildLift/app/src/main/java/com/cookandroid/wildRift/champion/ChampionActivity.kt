@@ -5,6 +5,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.cookandroid.wildRift.R
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_champion.*
 
@@ -32,6 +34,11 @@ class ChampionActivity : AppCompatActivity() {
         TabLayoutMediator(tabLyChampion, viewPager, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
             tab.text = getString(adapter.fragmentList[position].tabTitle!!)
         }).attach()
+
+        // 배너광고
+        var mAdView = findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
     }
 
     // ActionBar ItemSelected 이벤트

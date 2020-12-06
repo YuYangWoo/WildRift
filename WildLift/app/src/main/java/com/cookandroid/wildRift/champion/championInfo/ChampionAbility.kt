@@ -25,6 +25,10 @@ class ChampionAbility : BaseActivity<ActivityChampionAbilityBinding>(R.layout.ac
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
+        // 배너광고
+        var mAdView = findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:ads="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+
+<com.google.android.gms.ads.AdView
+
+    android:id="@+id/adView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-   >
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    ads:adSize="BANNER"
+    ads:adUnitId="@string/test_bottom_ad_id"
+    ads:layout_constraintBottom_toBottomOf="parent"
+    ads:layout_constraintEnd_toEndOf="parent"
+    ads:layout_constraintHeight_percent="0.08"
+    ads:layout_constraintStart_toStartOf="parent"
+    ads:layout_constraintWidth_percent="1"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto" />
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/test_bottom_ad_id"
-        ads:layout_constraintBottom_toBottomOf="parent"
-        ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintHeight_percent="0.08"
-        ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintWidth_percent="1"></com.google.android.gms.ads.AdView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
