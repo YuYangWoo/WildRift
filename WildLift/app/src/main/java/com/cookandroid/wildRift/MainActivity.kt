@@ -22,6 +22,7 @@ import com.cookandroid.wildRift.item.ItemActivity
 import com.cookandroid.wildRift.rune.RunesActivity
 import com.cookandroid.wildRift.singleton.FirebaseSingleton
 import com.cookandroid.wildRift.spell.SpellActivity
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -67,6 +68,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         // 왈백 패치노트
         setWildNote()
+
+        // 모바일 광고 SDK 초기화
+        MobileAds.initialize(this) {}
     }
 
     private fun initBar() {

@@ -6,6 +6,8 @@ import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.cookandroid.wildRift.R
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import kotlinx.android.synthetic.main.activity_skill_skin.*
 
 class ChampionSkillSkin : AppCompatActivity() {
@@ -32,6 +34,11 @@ class ChampionSkillSkin : AppCompatActivity() {
             settings.javaScriptEnabled = true
         }
         webView.loadUrl("https://wildrift.leagueoflegends.com/ko-kr/champions/$champEngName/")
+
+        // 배너광고
+        var mAdView = findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
     }
 
     override fun onBackPressed() {

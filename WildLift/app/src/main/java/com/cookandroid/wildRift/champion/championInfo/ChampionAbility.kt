@@ -15,6 +15,8 @@ import com.cookandroid.wildRift.base.BaseHolder
 import com.cookandroid.wildRift.champion.ChampionFactory
 import com.cookandroid.wildRift.databinding.ActivityChampionAbilityBinding
 import com.cookandroid.wildRift.databinding.HolderSkillBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import kotlin.properties.Delegates
 
 class ChampionAbility : BaseActivity<ActivityChampionAbilityBinding>(R.layout.activity_champion_ability) {
@@ -23,6 +25,10 @@ class ChampionAbility : BaseActivity<ActivityChampionAbilityBinding>(R.layout.ac
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
+        // 배너광고
+        var mAdView = findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
