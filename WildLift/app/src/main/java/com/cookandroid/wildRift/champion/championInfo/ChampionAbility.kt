@@ -15,6 +15,8 @@ import com.cookandroid.wildRift.base.BaseHolder
 import com.cookandroid.wildRift.champion.ChampionFactory
 import com.cookandroid.wildRift.databinding.ActivityChampionAbilityBinding
 import com.cookandroid.wildRift.databinding.HolderSkillBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import kotlin.properties.Delegates
 
 class ChampionAbility : BaseActivity<ActivityChampionAbilityBinding>(R.layout.activity_champion_ability) {
