@@ -26,7 +26,7 @@ class ChampionAbility : BaseActivity<ActivityChampionAbilityBinding>(R.layout.ac
         super.onCreate(savedInstanceState)
         init()
         // 배너광고
-        var mAdView = findViewById<AdView>(R.id.adView)
+        val mAdView = findViewById<AdView>(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
     }

@@ -7,11 +7,17 @@ import com.cookandroid.wildRift.R
 import com.cookandroid.wildRift.base.BaseActivity
 import com.cookandroid.wildRift.databinding.ActivityRunesSpellBinding
 import com.cookandroid.wildRift.singleton.FirebaseSingleton
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 
 class RunesActivity : BaseActivity<ActivityRunesSpellBinding>(R.layout.activity_runes_spell) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
+
+        val mAdView = findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
