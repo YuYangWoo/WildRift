@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.wildRift.Lotation.LotationAdapter
 import com.cookandroid.wildRift.Patch.DialogDevelopment
 import com.cookandroid.wildRift.Patch.PatchAdapter
+import com.cookandroid.wildRift.Patch.PatchWebView
 import com.cookandroid.wildRift.Patch.WildNoteAdapter
 import com.cookandroid.wildRift.Video.VideoAdapter
 import com.cookandroid.wildRift.champion.ChampionActivity
@@ -173,6 +174,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.law -> {
                 startActivity(Intent(this,Law::class.java))
+            }
+            R.id.ChampionSearch -> {
+                var intent = Intent(this,PatchWebView::class.java)
+                intent.putExtra("championSearch","1")
+                startActivity(intent)
             }
         }
 

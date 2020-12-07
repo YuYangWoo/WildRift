@@ -17,7 +17,7 @@ class PatchWebView : AppCompatActivity() {
 
         var patchTitle = intent.getStringExtra("patchTitle")
         var patchUrl  = intent.getStringExtra("patchUrl")
-        title = patchTitle
+
 
         // 툴바 만들기
         val toolbar = findViewById<Toolbar>(R.id.toolbar2)
@@ -34,9 +34,11 @@ class PatchWebView : AppCompatActivity() {
         }
         when(key) {
             "1" -> {
+                title ="챔피언 찾기"
                 webView.loadUrl("https://findyourchampion.wildrift.leagueoflegends.com/ko-kr/")
             }
             else -> {
+                title = patchTitle
                 webView.loadUrl("$patchUrl")
             }
         }
