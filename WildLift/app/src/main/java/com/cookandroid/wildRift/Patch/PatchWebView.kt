@@ -26,12 +26,20 @@ class PatchWebView : AppCompatActivity() {
         // ActionBar Home 버튼 Enable
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // 웹 뷰 적용
+        var key  = intent.getStringExtra("championSearch")
+
         webView.apply {
             webViewClient = WebViewClient()
             settings.javaScriptEnabled = true
         }
-        webView.loadUrl("$patchUrl")
+        when(key) {
+            "1" -> {
+                webView.loadUrl("https://findyourchampion.wildrift.leagueoflegends.com/ko-kr/")
+            }
+            else -> {
+                webView.loadUrl("$patchUrl")
+            }
+        }
 
         // 배너광고
         var mAdView = findViewById<AdView>(R.id.adView)
