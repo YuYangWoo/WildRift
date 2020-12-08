@@ -27,8 +27,8 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.navigation.NavigationView
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import kotlinx.android.synthetic.main.activity_main.*
-
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
     // 패치 리사이클러뷰
@@ -47,10 +47,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private var splash = SplashActivity()
     private var lotationList = ArrayList<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.content_main)
-
         // 파이어베이스 정보들 불러오기
         FirebaseSingleton.init()
 
@@ -74,6 +74,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         // 모바일 광고 SDK 초기화
         MobileAds.initialize(this) {}
+
         // 배너광고
         var mAdView = findViewById<AdView>(R.id.adView)
         val adRequest = AdRequest.Builder().build()
