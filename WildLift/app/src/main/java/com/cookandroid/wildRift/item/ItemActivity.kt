@@ -12,6 +12,8 @@ import com.cookandroid.wildRift.base.BaseActivity
 import com.cookandroid.wildRift.databinding.ActivityItemBinding
 import com.cookandroid.wildRift.item.dialog.ItemSearchDialog
 import com.cookandroid.wildRift.item.fragment.*
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ItemActivity : BaseActivity<ActivityItemBinding>(R.layout.activity_item) {
@@ -20,6 +22,11 @@ class ItemActivity : BaseActivity<ActivityItemBinding>(R.layout.activity_item) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
+
+        // 배너광고
+        val mAdView = findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

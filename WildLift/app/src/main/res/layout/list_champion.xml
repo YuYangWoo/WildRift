@@ -73,9 +73,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="60dp"
         android:background="@drawable/bluepowder"
-        app:layout_constraintEnd_toStartOf="@+id/txtIP"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintTop_toTopOf="@+id/txtIP"
         app:layout_constraintWidth_percent="0.05" />
@@ -84,11 +84,11 @@
         android:id="@+id/wildCore"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/wildcore"
         app:layout_constraintBottom_toBottomOf="@+id/txtRp"
-        app:layout_constraintEnd_toStartOf="@id/txtRp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintWidth_percent="0.05" />
 

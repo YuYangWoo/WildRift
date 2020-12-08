@@ -34,6 +34,7 @@ object FirebaseSingleton {
 
                 }
             })
+        
 
         database
             .getReference("runeList")

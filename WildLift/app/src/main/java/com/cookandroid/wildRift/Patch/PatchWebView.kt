@@ -17,7 +17,7 @@ class PatchWebView : AppCompatActivity() {
 
         var patchTitle = intent.getStringExtra("patchTitle")
         var patchUrl  = intent.getStringExtra("patchUrl")
-        title = patchTitle
+
 
         // 툴바 만들기
         val toolbar = findViewById<Toolbar>(R.id.toolbar2)
@@ -26,12 +26,22 @@ class PatchWebView : AppCompatActivity() {
         // ActionBar Home 버튼 Enable
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // 웹 뷰 적용
+        var key  = intent.getStringExtra("championSearch")
+
         webView.apply {
             webViewClient = WebViewClient()
             settings.javaScriptEnabled = true
         }
-        webView.loadUrl("$patchUrl")
+        when(key) {
+            "1" -> {
+                title ="챔피언 찾기"
+                webView.loadUrl("https://findyourchampion.wildrift.leagueoflegends.com/ko-kr/")
+            }
+            else -> {
+                title = patchTitle
+                webView.loadUrl("$patchUrl")
+            }
+        }
 
         // 배너광고
         var mAdView = findViewById<AdView>(R.id.adView)

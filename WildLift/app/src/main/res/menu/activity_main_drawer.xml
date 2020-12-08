@@ -27,7 +27,14 @@
 
         </menu>
     </item>
-
+    <item android:title="유용한 정보">
+        <menu>
+            <item
+                android:id = "@+id/ChampionSearch"
+                android:icon="@drawable/ic_menu_send"
+                android:title="챔피언 찾기"/>
+        </menu>
+    </item>
     <item android:title="커뮤니티">
         <menu>
             <item
