@@ -110,6 +110,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         recyclerPatch.adapter = recyclerViewPatchAdapter
     }
 
+    // 로테이션 리스트 만들기
     private fun setLotation() {
         recyclerLotation.setHasFixedSize(true)
         layoutManagerLotation = GridLayoutManager(this@MainActivity, 5)
@@ -130,6 +131,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun setVideo() {
         recyclerVideo.setHasFixedSize(true)
         layoutManagerVideo = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        (layoutManagerVideo as LinearLayoutManager).reverseLayout = true
+        (layoutManagerVideo as LinearLayoutManager).stackFromEnd = true
         recyclerVideo.layoutManager = layoutManagerVideo
         recyclerVideo.adapter = recyclerViewVideoAdapter
     }
