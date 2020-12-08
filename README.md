@@ -14,6 +14,15 @@ https://play.google.com/store/apps/details?id=com.cookandroid.wildlift
 게임의 변화에 따라서 모든 정보를 확인할 수 있습니다.
 ![짬뽕](https://user-images.githubusercontent.com/59405161/101522806-18136280-39cb-11eb-8f86-08f2d0910651.jpg)
 
+## 🐔  Languages & IDE
+- App : Kotlin & Android Studio
+- 로컬 DB : Firebase
+
+## 🐖  Environment
+-   Operating System : Window10 64bit
+-   CPU : I5-8265U
+-   RAM : 8GB
+
 ## 🐪  Helper
 - Developer : 유양우, 강태종
 - Design : 임한결
