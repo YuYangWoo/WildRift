@@ -37,8 +37,5 @@ class VideoActivity: YouTubeBaseActivity() {
 
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
 
-    }
 }
