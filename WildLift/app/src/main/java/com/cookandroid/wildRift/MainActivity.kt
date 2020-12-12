@@ -179,11 +179,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.law -> {
                 startActivity(Intent(this,Law::class.java))
             }
-            R.id.ChampionSearch -> {
-                var intent = Intent(this,PatchWebView::class.java)
-                intent.putExtra("championSearch","1")
-                startActivity(intent)
-            }
         }
 
         val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)

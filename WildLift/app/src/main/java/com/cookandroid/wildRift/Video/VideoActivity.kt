@@ -21,7 +21,7 @@ class VideoActivity: YouTubeBaseActivity() {
         Log.d("beforeid", videoId.toString())
         var youtubeView = findViewById<YouTubePlayerView>(R.id.youtubeView)
 
-        txtVideoTopic.text = videoTxt
+//        txtVideoTopic.text = videoTxt
         // 유튜브 뷰
         youtubeView.initialize("develop", object : YouTubePlayer.OnInitializedListener
         { override fun onInitializationSuccess(provider: YouTubePlayer.Provider, player: YouTubePlayer, wasRestored: Boolean )
@@ -34,9 +34,11 @@ class VideoActivity: YouTubeBaseActivity() {
             override fun onInitializationFailure(provider: YouTubePlayer.Provider?, result: YouTubeInitializationResult? )
             { } })
 
-        // 배너광고
-        var mAdView = findViewById<AdView>(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
-        mAdView.loadAd(adRequest)
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
     }
 }
