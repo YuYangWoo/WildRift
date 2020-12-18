@@ -2,12 +2,12 @@ package com.cookandroid.wildRift.champion.championInfo
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cookandroid.wildRift.R
+import com.cookandroid.wildRift.champion.championInfo.Board.ChampionBoard
 import com.cookandroid.wildRift.singleton.FirebaseSingleton
 import com.cookandroid.wildRift.spell.SpellFactory
 import com.google.android.gms.ads.AdRequest
@@ -128,9 +128,10 @@ class ChampionInfo : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // 미구현 버튼
+        // 게시판 버튼
         btnBoard.setOnClickListener {
             var intent = Intent(this, ChampionBoard::class.java)
+            intent.putExtra("championName", champName)
             startActivity(intent)
         }
     }

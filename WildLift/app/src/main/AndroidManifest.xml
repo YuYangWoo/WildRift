@@ -51,7 +51,9 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".Law"
             android:screenOrientation="portrait"/>
-        <activity android:name=".champion.championInfo.ChampionBoard"
+        <activity android:name=".champion.championInfo.Board.ChampionBoard"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".champion.championInfo.Board.BoardWrite"
             android:screenOrientation="portrait"/>
     </application>
 
