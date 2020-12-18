@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/test_admob"/>
+            android:value="@string/admob"/>
         <activity
             android:name="com.cookandroid.wildRift.SplashActivity"
             android:label="왈백과사전">
@@ -50,6 +50,8 @@
         <activity android:name="com.cookandroid.wildRift.Video.VideoActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".Law"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".champion.championInfo.ChampionBoard"
             android:screenOrientation="portrait"/>
     </application>
 
