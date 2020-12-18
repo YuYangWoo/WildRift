@@ -16,15 +16,19 @@ import kotlinx.android.synthetic.main.activity_champion_info.*
 
 class ChampionInfo : AppCompatActivity() {
     private lateinit var championInformation: ChampionInformation
-    private var recyclerItemAdapter = com.cookandroid.wildRift.champion.championInfo.ItemAdapter()
-    private var recyclerRuneAdapter = com.cookandroid.wildRift.champion.championInfo.ItemAdapter()
-    private var recyclerSpellAdapter = com.cookandroid.wildRift.champion.championInfo.ItemAdapter()
+    private var recyclerItemAdapter = ItemAdapter()
+    private var recyclerRuneAdapter = ItemAdapter()
+    private var recyclerSpellAdapter = ItemAdapter()
     private lateinit var layoutManagerItem: RecyclerView.LayoutManager
     private lateinit var layoutManagerRune: RecyclerView.LayoutManager
     private lateinit var layoutManagerSpell: RecyclerView.LayoutManager
     private var itemUrl = ArrayList<ItemAdapter.ItemType>()
     private var runeUrl = ArrayList<ItemAdapter.ItemType>()
     private var spellUrl = ArrayList<ItemAdapter.ItemType>()
+    private lateinit var champImg :String
+    private lateinit var champName :String
+    private lateinit var champPosition :String
+    private lateinit var champEngName :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_champion_info)
@@ -32,10 +36,11 @@ class ChampionInfo : AppCompatActivity() {
         // ActionBar Title 변경
         title = resources.getString(R.string.champion_info_title)
 
-        var champImg = intent.getStringExtra("championImage")
-        var champName = intent.getStringExtra("championName")
-        var champPosition = intent.getStringExtra("championPosition")
-        var champEngName = intent.getStringExtra("championEngName")
+         champImg = intent.getStringExtra("championImage").toString()
+         champName = intent.getStringExtra("championName").toString()
+         champPosition = intent.getStringExtra("championPosition").toString()
+         champEngName = intent.getStringExtra("championEngName").toString()
+
         championInformation = run {
             for (information in FirebaseSingleton.championInformationList) {
                 if (information.name == champName) {
@@ -95,6 +100,13 @@ class ChampionInfo : AppCompatActivity() {
         txtChampName.text = champName
         txtChampPosition.text = champPosition
 
+        btnInit()
+        // 배너광고
+        var mAdView = findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+    }
+    fun btnInit() {
         // 스킬/스킨 버튼
         btnSkillSkin.setOnClickListener {
             var intent = Intent(this, ChampionSkillSkin::class.java)
@@ -117,13 +129,9 @@ class ChampionInfo : AppCompatActivity() {
         }
 
         // 미구현 버튼
-        btnNo.setOnClickListener {
-            Toast.makeText(this,"미구현 버튼입니다. 추후 업데이트 예정입니다.",Toast.LENGTH_SHORT).show()
+        btnBoard.setOnClickListener {
+            var intent = Intent(this, ChampionBoard::class.java)
+            startActivity(intent)
         }
-
-        // 배너광고
-        var mAdView = findViewById<AdView>(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
-        mAdView.loadAd(adRequest)
     }
 }
