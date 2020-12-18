@@ -128,9 +128,10 @@ class ChampionInfo : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // 미구현 버튼
+        // 게시판 버튼
         btnBoard.setOnClickListener {
             var intent = Intent(this, ChampionBoard::class.java)
+            intent.putExtra("championName", champName)
             startActivity(intent)
         }
     }
