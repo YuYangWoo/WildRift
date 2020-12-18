@@ -1,10 +1,12 @@
-package com.cookandroid.wildRift.champion.championInfo
+package com.cookandroid.wildRift.champion.championInfo.Board
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.cookandroid.wildRift.R
 import kotlinx.android.synthetic.main.activity_champion_board.*
+import kotlinx.android.synthetic.main.activity_champion_info.*
 
 class ChampionBoard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +20,9 @@ class ChampionBoard : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = "$champName" + "의 게시판"
 
+        btnWrite.setOnClickListener {
+            startActivity(Intent(this,BoardWrite::class.java))
+        }
     }
 
     // ActionBar ItemSelected 이벤트
