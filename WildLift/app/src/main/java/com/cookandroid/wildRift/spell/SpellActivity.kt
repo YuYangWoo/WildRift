@@ -34,6 +34,7 @@ class SpellActivity : AppCompatActivity() {
         layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = recyclerViewAdapter
+        recyclerViewAdapter.notifyDataSetChanged()
 
         // 배너광고
         var mAdView = findViewById<AdView>(R.id.adView)

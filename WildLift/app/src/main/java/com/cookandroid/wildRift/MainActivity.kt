@@ -108,6 +108,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         (layoutManager as LinearLayoutManager).stackFromEnd = true // 처음부터 끝까지
         recyclerPatch.layoutManager = layoutManager
         recyclerPatch.adapter = recyclerViewPatchAdapter
+        recyclerViewPatchAdapter.notifyDataSetChanged()
     }
 
     // 로테이션 리스트 만들기
@@ -125,6 +126,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         recyclerViewLotationAdapter = LotationAdapter(lotationList)
         recyclerLotation.adapter = recyclerViewLotationAdapter
+        recyclerViewLotationAdapter.notifyDataSetChanged()
     }
 
     // 유튜브 영상 리스트
@@ -135,6 +137,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         (layoutManagerVideo as LinearLayoutManager).stackFromEnd = true
         recyclerVideo.layoutManager = layoutManagerVideo
         recyclerVideo.adapter = recyclerViewVideoAdapter
+        recyclerViewVideoAdapter.notifyDataSetChanged()
     }
 
     private fun setWildNote() {
@@ -144,6 +147,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         (layoutManagerNote as LinearLayoutManager).stackFromEnd = true // 처음부터 끝까지
         recyclerNote.layoutManager = layoutManagerNote
         recyclerNote.adapter = recyclerViewNoteAdapter
+        recyclerViewNoteAdapter.notifyDataSetChanged()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

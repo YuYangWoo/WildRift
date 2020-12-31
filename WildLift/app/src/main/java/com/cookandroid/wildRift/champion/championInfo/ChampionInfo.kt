@@ -62,8 +62,10 @@ class ChampionInfo : AppCompatActivity() {
                 }
             }
         }
+
         recyclerItemAdapter = ItemAdapter(itemUrl)
         recyclerItem.adapter = recyclerItemAdapter
+        recyclerItemAdapter.notifyDataSetChanged()
 
         // 추천 룬 리스트
         recyclerRune.setHasFixedSize(true)
@@ -78,6 +80,7 @@ class ChampionInfo : AppCompatActivity() {
         }
         recyclerRuneAdapter = ItemAdapter(runeUrl)
         recyclerRune.adapter = recyclerRuneAdapter
+        recyclerRuneAdapter.notifyDataSetChanged()
 
         // 추천 스펠 리스트
         recyclerSpell.setHasFixedSize(true)
@@ -92,6 +95,7 @@ class ChampionInfo : AppCompatActivity() {
         }
         recyclerSpellAdapter = ItemAdapter(spellUrl)
         recyclerSpell.adapter = recyclerSpellAdapter
+        recyclerSpellAdapter.notifyDataSetChanged()
 
         // 챔피언 이미지
         Glide.with(this) // 띄어줄 뷰를 명시

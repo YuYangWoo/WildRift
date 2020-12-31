@@ -61,7 +61,7 @@ class ChampionListFragment() : Fragment() {
             }
         }
         recyclerView.adapter = recyclerViewAdapter
-
+        recyclerViewAdapter.notifyDataSetChanged()
         // searchView에 입력에 따른 변화
         searchView.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
